@@ -10,12 +10,11 @@
     function resetHero() {
         hero.style.backgroundImage = `url('${defaultBg}')`;
     }
-
-
-
-window.addEventListener('scroll', function() {
-    let offset = window.pageYOffset;
-    hero.style.backgroundPositionY = (offset * 0.3) + "px";
+    
+    // Parallax Effect
+    window.addEventListener('scroll', function() {
+        let offset = window.pageYOffset;
+        hero.style.backgroundPositionY = (offset * 0.3) + "px";
 });
 
 
