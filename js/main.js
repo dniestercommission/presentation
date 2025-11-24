@@ -3,13 +3,22 @@
 const hero = document.getElementById('hero');
 const defaultBg = "images/default.jpg";
 
+let bgTimeout;
+
 function changeHero(img) {
-    hero.style.backgroundImage = `url('${img}')`;
+    clearTimeout(bgTimeout);
+    bgTimeout = setTimeout(() => {
+        hero.style.backgroundImage = `url('${img}')`;
+    }, 50);
 }
 
 function resetHero() {
-    hero.style.backgroundImage = `url('${defaultBg}')`;
+    clearTimeout(bgTimeout);
+    bgTimeout = setTimeout(() => {
+        hero.style.backgroundImage = `url('${defaultBg}')`;
+    }, 50);
 }
+
 
 // Parallax Effect
 // window.addEventListener('scroll', function() {
@@ -40,3 +49,17 @@ document.querySelector(".scroll-down a").addEventListener("click", function(e) {
         behavior: "smooth"
     });
 });
+
+
+// Reveal on scroll
+const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+        }
+    });
+}, { threshold: 0.2 });
+
+revealElements.forEach(el => observer.observe(el));

@@ -1,6 +1,11 @@
 html {
     scroll-behavior: smooth;
 }
+body {
+    font-family: sans-serif;
+}
+
+
 /* HERO */
 #hero {
     height: 100vh;
@@ -46,26 +51,68 @@ html {
 
 /* Audience blocks */
 .audience-block {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     padding: 22px;
     cursor: pointer;
-    transition: 0.3s ease;
+
+    /* эффект плавного подъёма + мягкая анимация */
+    /* transform: translateY(0); */
+    transition: 0.25s ease;
+
+    /* легкий blur + мягкая тень как в macOS */
     backdrop-filter: blur(3px);
+    box-shadow:
+        0 4px 16px rgba(0,0,0,0.08),
+        0 2px 6px rgba(0,0,0,0.06);
+}
+.audience-block:hover {
+    /* transform: translateY(-10px); */
+    background: rgba(255,255,255,0.7);
+    box-shadow:
+        0 6px 22px rgba(0,0,0,0.12),
+        0 3px 10px rgba(0,0,0,0.08);
 }
 
-.audience-block:hover {
-    background: rgba(255,255,255,0.28);
+/* Functioners */
+.block-functioners {
+    background-color: rgba(52, 132, 98, 1);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+/* Researchers */
+.block-researchers {
+    background-color: rgba(60, 120, 170, 1);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+/* Youth */
+.block-youth {
+    background-color: rgba(200, 170, 50, 1);
+    border-radius: 12px;
+    transition: 0.3s;
 }
 
 .audience-block h4 {
-    margin-bottom: 6px;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+.audience-block h4,
+.audience-block p {
+    color: white;
+    transition: color 0.25s ease;
 }
 
 .audience-block p {
     margin: 0;
     opacity: 0.85;
+}
+
+.audience-block:hover h4,
+.audience-block:hover p {
+    color: black;
 }
 
 /* Mobile responsiveness */
@@ -82,6 +129,15 @@ html {
     .hero-logo {
         max-width: 140px;
     }
+    #hero {
+        min-height: 130vh;   /* 120–140vh — идеально */
+        height: auto;        /* чтобы не ломало контент */
+    }
+
+    /* Мелкие улучшения */
+    .audience-block {
+        margin-bottom: 20px;
+    }
 }
 /* Fade-in effect */
 .fade-in {
@@ -94,7 +150,7 @@ html {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.8s;
 }
 
 .fade-in-delayed-2 {
@@ -137,3 +193,78 @@ html {
     opacity: 1;
     transform: translateY(4px);
 }
+
+
+/* Эффект скрытого состояния */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Когда на экране */
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* News cards */
+.news-card {
+    border: none !important;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    padding: 0;
+    transition: 0.25s ease;
+    transform: translateY(0);
+
+    box-shadow:
+        0 4px 16px rgba(0,0,0,0.08),
+        0 2px 6px rgba(0,0,0,0.06);
+}
+
+.news-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+    box-shadow:
+        0 6px 22px rgba(0,0,0,0.12),
+        0 3px 10px rgba(0,0,0,0.08);
+}
+
+.news-card .card-body {
+    padding: 20px 22px;
+}
+
+/* Эффекты текста */
+.news-card h5,
+.news-card h6,
+.news-card p {
+    opacity: 0.85;
+    transition: opacity 0.25s ease;
+}
+
+.news-card:hover h5,
+.news-card:hover h6,
+.news-card:hover p {
+    opacity: 0.95;
+}
+
+/* акцентированные версии */
+.news-card.featured {
+    border-left: 4px solid rgba(52, 132, 98, 0.45);
+}
+
+.news-card.science {
+    border-left: 4px solid rgba(60, 120, 170, 0.45);
+}
+
+.news-card.education {
+    border-left: 4px solid rgba(200, 170, 50, 0.45);
+}
+
+/* stagger animation */
+.news-card.reveal-visible {
+    transition-delay: calc(var(--i, 0) * 0.12s);
+}
+
