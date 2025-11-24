@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page Hero</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HERO SECTION (ONE FULL BACKGROUND) -->
+<section id="hero">
+    <div class="overlay">
+
+        <div class="container text-center text-light">
+
+            <!-- LOGO -->
+            <img src="images/main_logo.svg" class="hero-logo mb-4 fade-in" alt="Logo" width="100">
+
+            <!-- LANGUAGE SELECTOR -->
+            <div class="language-switch mb-4 fade-in-delayed">
+                <a href="#">Română</a>
+                <a href="#">Українська</a>
+                <a href="#">English</a>
+            </div>
+
+            <!-- PROJECT DESCRIPTION -->
+            <p class="project-description mb-5 fade-in-delayed-2">
+                Website of the Dniester Commission<br>
+                Save the Dniester river together
+            </p>
+
+            <!-- THREE INTERACTIVE BLOCKS -->
+            <div class="row g-4 justify-content-center">
+
+                <!-- Block 1 -->
+                <div class="col-md-3 col-10">
+                    <div class="audience-block fade-in-delayed-2"
+                         onmouseover="changeHero('images/functioners.jpg')"
+                         onmouseout="resetHero()">
+                        <h4>Functioners & Visitors</h4>
+                        <p>News, publications, official documents</p>
+                    </div>
+                </div>  
+
+                <!-- Block 2 -->
+                <div class="col-md-3 col-10">
+                    <div class="audience-block fade-in-delayed-2"
+                         onmouseover="changeHero('images/researchers.jpg')"
+                         onmouseout="resetHero()">
+                        <h4>Researchers & Specialists</h4>
+                        <p>GIS portal, API, Datasets</p>
+                    </div>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="col-md-3 col-10">
+                    <div class="audience-block fade-in-delayed-2"
+                         onmouseover="changeHero('images/youth.jpg')"
+                         onmouseout="resetHero()">
+                        <h4>Youth and Students</h4>
+                        <p>Learning materials, eco-education, activities</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SCROLL ARROW -->
+            <div class="scroll-down mt-5">
+                <a href="#news-section">
+                    <img src="images/arrow_down.svg" alt="Scroll down" class="arrow-icon">
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- SECOND SCREEN: NEWS -->
+<section id="news-section" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">Latest Project News</h2>
+
+        <div class="row g-4">
+
+            <!-- Big news -->
+            <div class="col-md-8">
+                <div class="card">
+                    <img src="images/news_big.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5>Main headline news</h5>
+                        <p>Important regional update or project event...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smaller news -->
+            <div class="col-md-4">
+
+                <div class="card mb-4">
+                    <img src="images/news1.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6>News title 1</h6>
+                        <p>Short description...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="images/news2.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6>News title 2</h6>
+                        <p>Short description...</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="py-4 bg-dark text-light mt-5">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+                <h5>About project</h5>
+                <p class="small">Brief description of the initiative...</p>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h5>Navigation</h5>
+                <ul class="list-unstyled small">
+                    <li><a href="#" class="text-light text-decoration-none">News</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Documents</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">GIS Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h5>Contacts</h5>
+                <p class="small mb-0">Email: info@example.org</p>
+                <p class="small">Phone: +373 ...</p>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
