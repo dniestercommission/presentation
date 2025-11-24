@@ -1,21 +1,21 @@
 // Background Switcher
 
-    const hero = document.getElementById('hero');
-    const defaultBg = "images/default.jpg";
+const hero = document.getElementById('hero');
+const defaultBg = "images/default.jpg";
 
-    function changeHero(img) {
-        hero.style.backgroundImage = `url('${img}')`;
-    }
+function changeHero(img) {
+    hero.style.backgroundImage = `url('${img}')`;
+}
 
-    function resetHero() {
-        hero.style.backgroundImage = `url('${defaultBg}')`;
-    }
-    
-    // Parallax Effect
-    window.addEventListener('scroll', function() {
-        let offset = window.pageYOffset;
-        hero.style.backgroundPositionY = (offset * 0.3) + "px";
-});
+function resetHero() {
+    hero.style.backgroundImage = `url('${defaultBg}')`;
+}
+
+// Parallax Effect
+// window.addEventListener('scroll', function() {
+//         let offset = window.pageYOffset;
+//         hero.style.backgroundPositionY = (offset * 0.3) + "px";
+// });
 
 
 

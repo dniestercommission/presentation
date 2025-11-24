@@ -13,8 +13,8 @@ html {
 
 /* Dark overlay + blur */
 #hero .overlay {
-    backdrop-filter: blur(3px);
-    background: rgba(0, 0, 0, 0.55);
+    /* backdrop-filter: blur(3px); */
+    background: rgba(0, 0, 0, 0.33);
     height: 100%;
     width: 100%;
     padding-top: 60px;
@@ -111,16 +111,16 @@ html {
     }
 }
 /* Parallax background effect */
-#hero {
+/* #hero {
     background-attachment: fixed;
 }
 
 @media (max-width: 768px) {
-    /* Disable parallax on mobile */
+    // Disable parallax on mobile
     #hero {
         background-attachment: scroll;
     }
-}
+} */
 /* Scroll down arrow */
 .scroll-down {
     text-align: center;
