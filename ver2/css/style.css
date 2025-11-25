@@ -532,6 +532,32 @@ footer a:hover {
     border-radius: 1px;
 }
 
+
+.hero-full .hero-img {
+    height: 60vh; /* можно 100vh, 70vh, 50vh — как хочешь */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.gallery-grid {
+    columns: 3;
+    column-gap: 16px;
+}
+
+.gallery-grid .item {
+    height: auto;
+    aspect-ratio: 1 / 1; /* или 4/5, 3/2, разные */
+    margin-bottom: 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
 /* Make sure caption stays readable on all screens */
 @media (max-width: 768px) {
     .carousel-caption-custom {
