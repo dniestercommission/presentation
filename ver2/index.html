@@ -151,29 +151,60 @@
         </div>
     </nav>
 
+
     <!-- ========== SLIDER (immediately after menu) ========== -->
-    <div id="mainSlider" class="carousel slide" data-bs-ride="carousel">
+    <div id="mainSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <!-- LOGO PANEL OVER SLIDER -->
+    <div class="logo-overlay">
+        <div class="logo-overlay-inner">
+            <div class="logo-item">
+                <img src="images/min2.png" class="nav-logo" 
+                    style="height:50px;width:auto;object-fit:contain;"></div>
+            <div class="logo-item">
+                <img src="images/min1.jpg" class="nav-logo" 
+                    style="height:67px;width:auto;object-fit:contain;"></div>
+        </div>
+    </div>
+
+
 
         <div class="carousel-inner">
+
             <div class="carousel-item active">
                 <img src="images/slide1.png" class="d-block w-100 slider-img" alt="">
-                <div class="carousel-caption">
-                    <h2 class="fw-bold">Protecting the Dniester River</h2>
+                <div class="carousel-caption-custom">
+                    <h2 class="news-title">
+                        <span>Commission Holds Environmental Summit in Chisinau</span>
+                    </h2>
+                    <p class="news-teaser">
+                        <span>Experts discussed water management, new monitoring approaches and cross-border cooperation.</span>
+                    </p>
                 </div>
             </div>
 
             <div class="carousel-item">
                 <img src="images/slide2.png" class="d-block w-100 slider-img" alt="">
-                <div class="carousel-caption">
-                    <h2 class="fw-bold">Joint Efforts for a Sustainable Future</h2>
+                <div class="carousel-caption-custom">
+                    <h2 class="news-title">
+                        <span>New GIS Layers Added to Monitoring Portal</span>
+                    </h2>
+                    <p class="news-teaser">
+                        <span>The updates include satellite-based hydrology, vegetation indexes and pollution maps.</span>
+                    </p>
                 </div>
             </div>
 
             <div class="carousel-item">
                 <img src="images/slide3.png" class="d-block w-100 slider-img" alt="">
-                <div class="carousel-caption">
-                    <h2 class="fw-bold">Science, Monitoring, Cooperation</h2>
-                </div>
+            <div class="carousel-caption-custom">
+                <h2 class="news-title">
+                    <span>New HIS</span>
+                </h2>
+                <p class="news-teaser">
+                    <span>The updates include satellite-based hydrology, vegetation indexes and pollution maps.</span>
+                </p>
+            </div>
             </div>
         </div>
 
@@ -452,6 +483,8 @@ document.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
     }
 
 });
+
+
 </script>
 
 
