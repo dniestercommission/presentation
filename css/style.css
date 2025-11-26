@@ -267,4 +267,15 @@ body {
 .news-card.reveal-visible {
     transition-delay: calc(var(--i, 0) * 0.12s);
 }
+.choosecase-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block; /* важное — делает ссылку кликабельной по всей области */
+}
 
+.choosecase-link:hover,
+.choosecase-link:focus,
+.choosecase-link:active {
+    text-decoration: none !important;
+    color: inherit !important;
+}
