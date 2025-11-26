@@ -575,3 +575,34 @@ footer a:hover {
         font-size: 1rem;
     }
 }
+
+/* PARTNER LOGOS */
+.eo-footer-partners {
+    /* border-top: 1px solid rgba(255,255,255,0.15); */
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 0 50px 0;
+}
+
+.eo-partner-logo {
+    height: 64px;
+    width: auto;
+    /* opacity: 0.65; */
+    /* filter: brightness(0) invert(1); делаем логотипы белыми, как NASA */
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.eo-partner-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Mobile: logos in 2 rows */
+@media (max-width: 768px) {
+    .eo-footer-partners {
+        justify-content: center;
+        gap: 22px;
+    }
+    .eo-partner-logo {
+        height: 32px;
+    }
+}

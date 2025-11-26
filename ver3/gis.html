@@ -13,6 +13,53 @@
 
     <!-- Our Styles -->
     <link rel="stylesheet" href="css/style.css">
+<style>
+.gis-sidebar {
+  width: 300px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.gis-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.gis-tree-children {
+  margin-left: 22px;
+  margin-top: 4px;
+  border-left: 1px dashed #ccc;
+  padding-left: 12px;
+}
+
+.gis-folder-icon {
+  font-size: 16px;
+  color: #5a7b9a;
+}
+
+.gis-layer-cb {
+  margin-right: 6px;
+}
+
+.accordion-button {
+  padding: 8px 14px;
+  font-weight: 600;
+}
+
+.accordion-item {
+  border-radius: 8px !important;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+</style>
+
+
 </head>
 <body>
 
@@ -65,24 +112,211 @@
   <div class="gis-container">
 
     <!-- Sidebar -->
-    <aside class="gis-sidebar">
-      <h3>GIS Layers</h3>
+<div class="gis-sidebar">
 
-      <div class="filter-group">
-        <label><input type="checkbox" checked> River Basin</label>
-        <label><input type="checkbox" checked> Monitoring Stations</label>
-        <label><input type="checkbox"> Protected Areas</label>
-        <label><input type="checkbox"> Groundwater</label>
-        <label><input type="checkbox"> Flood Zones</label>
-      </div>
+  <div class="accordion" id="gisAccordion">
 
-      <h3>Environmental Themes</h3>
-      <div class="filter-group">
-        <label><input type="checkbox"> Water Quality</label>
-        <label><input type="checkbox"> Climate Impact</label>
-        <label><input type="checkbox"> Biodiversity</label>
+    <!-- ============================ -->
+    <!-- 1. NAVIGATION -->
+    <!-- ============================ -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" 
+                type="button" data-bs-toggle="collapse"
+                data-bs-target="#accNavigation">
+          Navigation
+        </button>
+      </h2>
+
+      <div id="accNavigation" class="accordion-collapse collapse show" data-bs-parent="#gisAccordion">
+        <div class="accordion-body">
+
+          <!-- Catalogue of bridges -->
+          <div class="gis-tree-item">
+            <i class="bi bi-folder-fill gis-folder-icon"></i>
+            Catalogue of bridges
+          </div>
+
+          <div class="gis-tree-children">
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb">
+              Bridges
+            </label>
+          </div>
+
+          
+
+          <!-- ENC -->
+          <div class="gis-tree-item">
+            <i class="bi bi-folder-fill gis-folder-icon"></i>
+            ENC
+          </div>
+
+          <div class="gis-tree-children">
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Light
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Beacon, lateral
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Notice mark
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Distance mark
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Buoy, lateral
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Wreck
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Anchorage area
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Anchor berth
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Cable area
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Cable overhead
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Cable, submarine
+            </label>
+
+          </div>
+
+        </div>
       </div>
-    </aside>
+    </div>
+
+
+    <!-- ============================ -->
+    <!-- 2. HYDROLOGICAL & METEOROLOGICAL -->
+    <!-- ============================ -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed"
+                type="button" data-bs-toggle="collapse"
+                data-bs-target="#accHydro">
+          Hydrological and meteorological data
+        </button>
+      </h2>
+
+      <div id="accHydro" class="accordion-collapse collapse" data-bs-parent="#gisAccordion">
+        <div class="accordion-body">
+
+          <div class="gis-tree-item">
+            <i class="bi bi-folder-fill gis-folder-icon"></i>
+            Sava HIS
+          </div>
+
+          <div class="gis-tree-children">
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Hydrological Stations
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Meteorological Stations
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================ -->
+    <!-- 3. RIVER BASIN MANAGEMENT -->
+    <!-- ============================ -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed"
+                type="button" data-bs-toggle="collapse"
+                data-bs-target="#accRBM">
+          River Basin Management
+        </button>
+      </h2>
+
+      <div id="accRBM" class="accordion-collapse collapse" data-bs-parent="#gisAccordion">
+        <div class="accordion-body">
+
+          <div class="gis-tree-item">
+            <i class="bi bi-folder-fill gis-folder-icon"></i>
+            Sava GIS
+          </div>
+
+          <div class="gis-tree-children">
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Competent Authorities Area
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> River Basin Districts
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> EU Ecoregions
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> River segments
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> River Water Body Segment
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Surface Water Monitoring Site
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Waterway
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> River Basin
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> SubBasin
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Groundwater Body
+            </label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Protected Area – point</label>
+
+            <label class="gis-tree-item">
+              <input type="checkbox" class="gis-layer-cb"> Protected Area – polygon</label>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
 
     <!-- Map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -101,20 +335,61 @@
 
 <script>
 // Создаём карту
-const map = L.map('real-map').setView([46.37, 30.32], 10); 
-// координаты Днестровского лимана
+const map = L.map('real-map').setView([46.37, 30.32], 10);
 
-// Подгружаем настоящий тайл OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
+// Terrain подложка (OpenTopoMap — красиво и контрастно)
+L.tileLayer('https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    maxZoom: 19
 }).addTo(map);
 
-// Пример: точка где Днестр входит в лиман
-L.marker([46.412, 30.344])
-  .addTo(map)
-  .bindPopup("Dniester Estuary — Mouth of the River");
+
+
+// -------------------------------------------------------
+// ФУНКЦИЯ мини-точки (уменьшенный glow)
+// -------------------------------------------------------
+function glowMini(lat, lon, color="#00aaff") {
+    return L.circleMarker([lat, lon], {
+        radius: 5,            // маленькие!
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.8,
+        weight: 2,
+        opacity: 0.7
+    }).addTo(map);
+}
+
+
+// -------------------------------------------------------
+// СЕТКА ИЛИ СЛУЧАЙНАЯ РАССТАНОВКА ТОЧЕК (25 точек)
+// -------------------------------------------------------
+
+function rand(min, max) {
+    return min + Math.random() * (max - min);
+}
+
+// регион лимана
+const LAT_MIN = 46.35;
+const LAT_MAX = 46.56;
+const LON_MIN = 30.18;
+const LON_MAX = 30.42;
+
+const colors = ["#00c2ff", "#00ffaa", "#ffdd00"];
+
+for (let i = 0; i < 25; i++) {
+    glowMini(
+        rand(LAT_MIN, LAT_MAX),
+        rand(LON_MIN, LON_MAX),
+        colors[i % colors.length]
+    );
+}
+
+
+// Главная подписьная точка (можно оставить)
+// L.marker([46.412, 30.344])
+//   .addTo(map)
+//   .bindPopup("<b>Dniester Estuary</b><br>Mouth of the river");
 </script>
+
 
 
   </div>
@@ -256,6 +531,65 @@ L.marker([46.412, 30.344])
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Новый красивый стиль карты -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// Создаём карту (центр — Днестровский лиман)
+const map = L.map('real-map').setView([46.37, 30.32], 10);
+
+// Подключаем красивый eco-стиль
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    attribution: '© OpenStreetMap, © Stadia Maps'
+}).addTo(map);
+
+// ========================
+//  ДОПОЛНИТЕЛЬНЫЕ МАРКЕРЫ
+// ========================
+
+// Основная точка — впадение Днестра
+L.marker([46.412, 30.344])
+  .addTo(map)
+  .bindPopup("<b>Dniester Estuary</b><br>Mouth of the river");
+
+// Дополнительные точки (примерные)
+// Гидропост №1
+L.marker([46.45, 30.28])
+  .addTo(map)
+  .bindPopup("<b>Monitoring Station</b><br>Hydrology");
+
+// Гидропост №2
+L.marker([46.39, 30.29])
+  .addTo(map)
+  .bindPopup("<b>Monitoring Station</b><br>Chemical analysis");
+
+// Экологическая точка наблюдения
+L.marker([46.52, 30.33])
+  .addTo(map)
+  .bindPopup("<b>Ecology Observation Point</b><br>Biodiversity survey");
+
+// Точка качества воды
+L.circleMarker([46.48, 30.26], {
+    radius: 10,
+    color: "#1c7c54",
+    fillColor: "#39d98a",
+    fillOpacity: 0.8
+})
+.addTo(map)
+.bindPopup("<b>Water Quality Site</b><br>Sampling area");
+
+// Точка измерения течений
+L.circleMarker([46.43, 30.37], {
+    radius: 8,
+    color: "#0077cc",
+    fillColor: "#4db7ff",
+    fillOpacity: 0.7
+})
+.addTo(map)
+.bindPopup("<b>Flow Measurement</b><br>Velocity monitoring");
+
+</script>
 
 </body>
 </html>

@@ -279,3 +279,74 @@ body {
     text-decoration: none !important;
     color: inherit !important;
 }
+.eo-footer {
+    background: #0c0e11;
+    padding: 40px 0 30px;
+    color: #bbb;
+    margin-top: 60px;
+}
+
+.eo-footer-col h5 {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.eo-footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: #bbb;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.eo-footer-col a:hover {
+    color: #fff;
+}
+
+.eo-footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+}
+
+.eo-footer-social a {
+    color: #bbb;
+    font-size: 1.2rem;
+}
+
+.eo-footer-social a:hover {
+    color: #fff;
+}
+
+/* PARTNER LOGOS */
+.eo-footer-partners {
+    /* border-top: 1px solid rgba(255,255,255,0.15); */
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 0 50px 0;
+}
+
+.eo-partner-logo {
+    height: 64px;
+    width: auto;
+    /* opacity: 0.65; */
+    /* filter: brightness(0) invert(1); делаем логотипы белыми, как NASA */
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.eo-partner-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Mobile: logos in 2 rows */
+@media (max-width: 768px) {
+    .eo-footer-partners {
+        justify-content: center;
+        gap: 22px;
+    }
+    .eo-partner-logo {
+        height: 32px;
+    }
+}
