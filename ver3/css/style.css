@@ -163,6 +163,40 @@
         rgba(0,0,0,0)
     );
 }
+/* Language Switcher */
+.eo-lang-switcher {
+    margin-right: 8px;
+}
+
+.eo-lang-link {
+    padding: 4px 10px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: color .25s ease, background .25s ease;
+}
+
+.eo-lang-link:hover {
+    color: #fff;
+}
+
+.eo-lang-link.active {
+    background: #3ac0ff;
+    color: #000 !important;
+    font-weight: 600;
+}
+@media (max-width: 768px) {
+    .eo-lang-link {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+    .eo-lang-switcher {
+        gap: 4px;
+    }
+}
 
 
 /* =========================================================
@@ -358,3 +392,92 @@
     }
 }
 
+
+
+
+.gis-section {
+  background: #eef5f2;
+  padding: 30px;
+}
+
+.gis-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* LEFT PANEL */
+.gis-sidebar {
+  width: 260px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(7px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.gis-sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #036b52;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.filter-group input {
+  margin-right: 8px;
+}
+
+/* MAP AREA */
+.gis-map {
+  flex: 1;
+  background: #dfeee8;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.map-placeholder {
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a7a72;
+  font-size: 18px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/BlankMap-World6.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  border-radius: 12px;
+}
+
+.map-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.map-actions button {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.map-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 12px;
+  opacity: 0.6;
+}

@@ -28,11 +28,11 @@
                 <img src="images/main_logo.svg" alt="Logo" style="height:36px;width:auto;object-fit:contain;">
             </a>
 
-            <a href="#" class="eo-topbar-link active">News</a>
+            <a href="index.html" class="eo-topbar-link">News</a>
             <a href="#" class="eo-topbar-link">About Commission</a>
             <a href="#" class="eo-topbar-link">Projects</a>
             <a href="#" class="eo-topbar-link">HIS</a>
-            <a href="gis.html" class="eo-topbar-link">GIS</a>
+            <a href="gis.html" class="eo-topbar-link active">GIS</a>
         </div>
 
 
@@ -61,119 +61,65 @@
      MAIN CONTENT
      ========================================================= -->
 <main class="eo-main">
+<section class="gis-section">
+  <div class="gis-container">
 
-    <!-- ========== HERO SECTION (NASA STYLE) ========== -->
-    <section class="eo-hero container-xxl">
-        <div class="eo-hero-inner">
+    <!-- Sidebar -->
+    <aside class="gis-sidebar">
+      <h3>GIS Layers</h3>
 
-            <div class="eo-hero-image"
-                 style="background-image:url('images/hero-sat.jpg');"></div>
+      <div class="filter-group">
+        <label><input type="checkbox" checked> River Basin</label>
+        <label><input type="checkbox" checked> Monitoring Stations</label>
+        <label><input type="checkbox"> Protected Areas</label>
+        <label><input type="checkbox"> Groundwater</label>
+        <label><input type="checkbox"> Flood Zones</label>
+      </div>
 
-            <div class="eo-hero-content">
-                <div class="eo-hero-tag">Image of the Day · November 26, 2025</div>
+      <h3>Environmental Themes</h3>
+      <div class="filter-group">
+        <label><input type="checkbox"> Water Quality</label>
+        <label><input type="checkbox"> Climate Impact</label>
+        <label><input type="checkbox"> Biodiversity</label>
+      </div>
+    </aside>
 
-                <h1 class="eo-hero-title">
-                    Sediment Plumes Along the Dniester Estuary
-                </h1>
+    <!-- Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-                <p class="eo-hero-text">
-                    Satellite observations reveal seasonal changes in water color, sediment transport,
-                    and ecological dynamics along the lower Dniester River.
-                </p>
+<style>
+  #real-map {
+    width: 100%;
+    height: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+</style>
 
-                <div class="eo-hero-meta">Land · Water · Sediment · Human Presence</div>
+<div id="real-map"></div>
 
-                <a href="#" class="btn eo-hero-btn mt-2">Read Story</a>
-            </div>
+<script>
+// Создаём карту
+const map = L.map('real-map').setView([46.37, 30.32], 10); 
+// координаты Днестровского лимана
 
-        </div>
-    </section>
+// Подгружаем настоящий тайл OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-    <!-- ========== GRID OF FEATURE BLOCKS (NASA STYLE) ========== -->
-    <section class="eo-grid container-xxl">
+// Пример: точка где Днестр входит в лиман
+L.marker([46.412, 30.344])
+  .addTo(map)
+  .bindPopup("Dniester Estuary — Mouth of the River");
+</script>
 
-        <!-- Large Card 1 -->
-        <article class="eo-card eo-card-medium">
-            <div class="eo-card-image" style="background-image:url('images/youth.jpg');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">Youth & Students</h3>
-                <h2 class="eo-card-title">Learn Earth from Space</h2>
-                <p class="eo-card-text">
-                    Interactive lessons & datasets that let students explore the Dniester from orbit.
-                </p>
-                <div class="eo-card-meta">Education · Youth</div>
-            </div>
-        </article>  
-    
 
-        <!-- Large Card 2 -->
-        <article class="eo-card eo-card-large">
-            <div class="eo-card-image" style="background-image:url('images/card_interpret.jpg');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">Feature Article</h3>
-                <h2 class="eo-card-title">How to Read Rivers from Space</h2>
-                <p class="eo-card-text">
-                    A beginner-friendly guide to interpreting textures, colors, and patterns in satellite 
-                    imagery to understand river health.
-                </p>
-                <div class="eo-card-meta">Remote Sensing · Guides</div>
-            </div>
-        </article>
+  </div>
+</section>
 
-        <!-- Medium 1 -->
-        <article class="eo-card eo-card-large">
-            <div class="eo-card-image" style="background-image:url('images/card_world_of_change.jpg');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">World of Change</h3>
-                <h2 class="eo-card-title">Dniester Delta Over Two Decades</h2>
-                <p class="eo-card-text">
-                    Time series imagery reveals the transformation of wetlands and river channels 
-                    under climate variability and land use change.
-                </p>
-                <div class="eo-card-meta">Published · Land · Water</div>
-            </div>
-        </article>
-
-        <!-- Medium 2 -->
-        <article class="eo-card eo-card-medium">
-            <div class="eo-card-image" style="background-image:url('images/slide3.avif');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">Blog</h3>
-                <h2 class="eo-card-title">Field Notes from the River</h2>
-                <p class="eo-card-text">
-                    Insights and stories from youth expeditions, joint missions and monitoring campaigns.
-                </p>
-                <div class="eo-card-meta">Stories · Community</div>
-            </div>
-        </article>
-
-        <!-- Medium 3 -->
-        <article class="eo-card eo-card-medium">
-            <div class="eo-card-image" style="background-image:url('images/slide1.avif');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">Natural Events</h3>
-                <h2 class="eo-card-title">Floods, Droughts & Ice Jams</h2>
-                <p class="eo-card-text">
-                    A curated look at recent hydro-meteorological extremes using satellite datasets.
-                </p>
-                <div class="eo-card-meta">Hydrology · Hazards</div>
-            </div>
-        </article>
-
-        <!-- Medium 4 -->
-        <article class="eo-card eo-card-medium">
-            <div class="eo-card-image" style="background-image:url('images/slide2.avif');"></div>
-            <div class="eo-card-body">
-                <h3 class="eo-card-kicker">Global Maps</h3>
-                <h2 class="eo-card-title">Temperature & Rainfall Anomalies</h2>
-                <p class="eo-card-text">
-                    Satellite-derived climatology for the Dniester basin and neighboring regions.
-                </p>
-                <div class="eo-card-meta">Heat · Water</div>
-            </div>
-        </article>
-
-    </section>
 
 </main>
 
