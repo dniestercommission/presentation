@@ -1,0 +1,360 @@
+/* =========================================================
+   BASIC COLOR VARIABLES (optional)
+   ========================================================= */
+:root {
+    --bg-color: #f5f7fa;
+    --card-bg: #ffffff;
+    --text-color: #1a1d1f;
+    --border-color: rgba(0,0,0,0.1);
+}
+
+/* =========================================================
+   TOP BAR (NASA STYLE)
+   ========================================================= */
+.eo-topbar {
+    width: 100%;
+    background: #111;
+    padding: 14px 0;
+}
+
+.eo-topbar-link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 4px;
+}
+
+.eo-topbar-link:hover {
+    color: #fff;
+}
+
+.eo-topbar-link.active {
+    color: #fff;
+    border-bottom: 2px solid #3ac0ff;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+.eo-main {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding-bottom: 70px;
+}
+
+/* =========================================================
+   HERO (NASA STYLE)
+   ========================================================= */
+.eo-hero {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.eo-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: stretch;
+}
+
+.eo-hero-image {
+    position: relative;
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+}
+
+.eo-hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0)
+    );
+}
+
+/* HERO CONTENT — editorial NASA style (no stripe, no button) */
+.eo-hero-content {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+
+    border: 1px solid rgba(255,255,255,0.55);
+
+    padding: 34px 36px;
+    border-radius: 0;
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.06);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    transition: color .25s ease;
+}
+
+/* TAG */
+.eo-hero-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #007bc5;
+}
+
+/* TITLE */
+.eo-hero-title {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1.22;
+    color: #0e1b29;
+    transition: color .25s ease;
+}
+
+/* TEXT — become bigger, more editorial */
+.eo-hero-text {
+    margin: 0;
+    line-height: 1.8;
+    font-size: 1.15rem;
+    color: #1f2d3b;
+    transition: color .25s ease;
+}
+
+/* META */
+.eo-hero-meta {
+    color: #5c6774;
+    font-size: 0.92rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 12px;
+    transition: color .25s ease;
+}
+
+/* Remove button entirely */
+.eo-hero-btn {
+    display: none !important;
+}
+
+/* IMAGE shadow — NASA style */
+.eo-hero-image {
+    position: relative;
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.06);
+}
+
+.eo-hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0)
+    );
+}
+
+
+/* =========================================================
+   GRID OF CARDS (NASA STYLE)
+   ========================================================= */
+.eo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.eo-card {
+    background: var(--card-bg);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: 0.22s ease;
+    cursor: pointer;
+}
+
+.eo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+.eo-card-image {
+    width: 100%;
+    padding-top: 60%;
+    background-size: cover;
+    background-position: center;
+}
+
+.eo-card-body {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.eo-card-kicker {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #777;
+    letter-spacing: 0.08em;
+}
+
+.eo-card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.eo-card-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.eo-card-meta {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+
+/* ===========================================
+   NASA TOP BAR
+   =========================================== */
+.eo-topbar {
+    width: 100%;
+    background: #001d30;
+    color: #ccc;
+}
+
+.eo-topbar-logo img {
+    height: 28px;
+    width: auto;
+}
+
+.eo-topbar-link {
+    text-decoration: none;
+    color: #cfcfcf;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 0;
+}
+
+.eo-topbar-link:hover {
+    color: #fff;
+}
+
+.eo-topbar-link.active {
+    color: #fff;
+    border-bottom: 2px solid #3ac0ff;
+}
+
+.eo-topbar-search {
+    color: #cfcfcf;
+}
+
+.eo-topbar-search:hover {
+    color: #fff;
+}
+
+
+/* ===========================================
+   NASA FOOTER
+   =========================================== */
+.eo-footer {
+    background: #0c0e11;
+    padding: 40px 0 30px;
+    color: #bbb;
+    margin-top: 60px;
+}
+
+.eo-footer-col h5 {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.eo-footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: #bbb;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.eo-footer-col a:hover {
+    color: #fff;
+}
+
+.eo-footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+}
+
+.eo-footer-social a {
+    color: #bbb;
+    font-size: 1.2rem;
+}
+
+.eo-footer-social a:hover {
+    color: #fff;
+}
+
+/* PARTNER LOGOS */
+.eo-footer-partners {
+    /* border-top: 1px solid rgba(255,255,255,0.15); */
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 0 50px 0;
+}
+
+.eo-partner-logo {
+    height: 64px;
+    width: auto;
+    /* opacity: 0.65; */
+    /* filter: brightness(0) invert(1); делаем логотипы белыми, как NASA */
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.eo-partner-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Mobile: logos in 2 rows */
+@media (max-width: 768px) {
+    .eo-footer-partners {
+        justify-content: center;
+        gap: 22px;
+    }
+    .eo-partner-logo {
+        height: 32px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 992px) {
+    .eo-hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .eo-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
