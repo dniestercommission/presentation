@@ -9,6 +9,8 @@ html {
     --text-muted: #b0b0b0;
     --border-color: #333;
     --icon-color: #eaeaea;
+    --icon-footer-color: #f0f0f0;
+    --icon-footer-hover-color: #ffffff;
     --icon-hover-color: #ffffff;
 }
 
@@ -22,6 +24,8 @@ html[data-bs-theme="light"] {
     --text-muted: #555555;
     --border-color: #ccc;
     --icon-color: #222222;
+    --icon-footer-color: #f0f0f0;
+    --icon-footer-hover-color: #ffffff;
     --icon-hover-color: #000000;
 }
 
@@ -376,6 +380,14 @@ footer a:hover {
     color: var(--icon-hover-color) !important;
 }
 
+.bi-footer {
+    color: var(--icon-footer-color) !important;
+    transition: color 0.25s;
+}
+
+.bi-footer:hover {
+    color: var(--icon-footer-hover-color) !important;
+}
 
 
 /* ===== LOGO PANEL OVER SLIDER ===== */
