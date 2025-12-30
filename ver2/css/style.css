@@ -2,6 +2,7 @@
 html {
     --bg-color: #0f0f0f;
     --bg-secondary: #181818;
+    --bg-footer: #0c0e11;
     --card-bg: #1f1f1f;
     --text-color: #f0f0f0;
     --text-inverse: #f0f0f0;
@@ -14,6 +15,7 @@ html {
 html[data-bs-theme="light"] {
     --bg-color: #ffffff;
     --bg-secondary: #ffffff;
+    --bg-footer: #152538;
     --card-bg: #ffffff;
     --text-color: #111111;
     --text-inverse: #f0f0f0;
@@ -333,7 +335,10 @@ a:hover { color: var(--text-muted); }
     color: var(--text-color);
 }
 
+
+
 /* Cards, news backgrounds */
+
 .news-large,
 .news-small,
 .card,
@@ -344,16 +349,16 @@ a:hover { color: var(--text-muted); }
 
 /* Footer */
 footer {
-    background: var(--bg-secondary);
-    color: var(--text-muted);
+    background: var(--bg-footer);
+    color: var(--text-inverse);
 }
 
 footer a {
-    color: var(--text-muted);
+    color: var(--text-inverse);
 }
 
 footer a:hover {
-    color: var(--text-color);
+    color: var(--text-inverse);
 }
 
 /* Gallery */
@@ -584,7 +589,7 @@ footer a:hover {
 }
 
 .eo-partner-logo {
-    height: 64px;
+    height: 89px;
     width: auto;
     /* opacity: 0.65; */
     /* filter: brightness(0) invert(1); делаем логотипы белыми, как NASA */
