@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dniester Commition</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Leaflet (OpenStreetMap) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+</head>
+
+<body>
+
+    <!-- ========== TOPBAR ========== -->
+    <div class="topbar d-flex justify-content-between align-items-center px-3">
+        <div class="d-flex align-items-center gap-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-threads"></i></a>
+        </div>
+
+
+        <div class="d-flex align-items-center gap-3">
+            <div class="lang-switcher d-flex align-items-center gap-1 me-3">
+                <a href="#" class="lang-option">Română</a>
+                <a href="#" class="lang-option">Українська</a>
+                <a href="#" class="lang-option active-lang">English</a>
+                <a href="#" class="lang-option">Руссский</a>
+            </div>
+            
+            <div class="dropdown">
+                <i class="bi bi-person-circle fs-4 user-icon" data-bs-toggle="dropdown" style="cursor:pointer;"></i>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                </ul>
+            </div>
+
+            <div class="theme-toggle">
+                <button id="themeSwitcher" class="btn btn-sm theme-btn">
+                    <i id="themeIcon" class="bi bi-moon-fill"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container-fluid">
+
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/main_logo.svg" class="nav-logo" 
+                    style="height:36px;width:auto;object-fit:contain;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            News & Events
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">News</a></li>
+                            <li><a class="dropdown-item" href="#">Events Calendar</a></li>
+                            <li><a class="dropdown-item" href="#">Past Events & Materials</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Activities & Cooperation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Key Areas of Work</a></li>
+                            <li><a class="dropdown-item" href="#">Projects & Initiatives</a></li>
+                            <li><a class="dropdown-item" href="#">Working Groups & Meetings</a></li>
+                            <li><a class="dropdown-item" href="#">Capacity Building</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Data & Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Reports & Publications</a></li>
+                            <li><a class="dropdown-item" href="#">Legal & Policy Documents</a></li>
+                            <li><a class="dropdown-item" href="#">Maps & Data</a></li>
+                            <li><a class="dropdown-item" href="#">Media Library</a></li>
+                            <li><a class="dropdown-item" href="#">Public Awareness Materials</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Mission & Mandate</a></li>
+                            <li><a class="dropdown-item" href="#">The Dniester River Basin</a></li>
+                            <li><a class="dropdown-item" href="#">Governance & Structure</a></li>
+                            <li><a class="dropdown-item" href="#">Partners & Donors</a></li>
+                            <li><a class="dropdown-item" href="#">Secretariat & Team</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Contact & Engagement
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Contact Information</a></li>
+                            <li><a class="dropdown-item" href="#">Contact Form</a></li>
+                            <li><a class="dropdown-item" href="#">Follow Us</a></li>
+                            <li><a class="dropdown-item" href="#">Get Involved</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- GIS item -->
+                    <!-- <li class="nav-item dropdown nav-accent-gis ms-2">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            GIS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="gis.html">GIS Portal</a></li>
+                            <li><a class="dropdown-item" href="#">Datasets</a></li>
+                            <li><a class="dropdown-item" href="#">API</a></li>
+                        </ul>
+                    </li> -->
+
+                    <!-- HIS item -->
+                    <!-- <li class="nav-item dropdown nav-accent-his ms-2">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            HIS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Hydrology Data</a></li>
+                            <li><a class="dropdown-item" href="#">Daily Reports</a></li>
+                        </ul>
+                    </li> -->
+
+                </ul>
+
+                <!-- RIGHT SIDE ICONS -->
+                <div class="d-flex align-items-center ms-auto">
+            <div class="logo-item">
+                <img src="images/min2.png" class="nav-logo" 
+                    style="height:40px;width:auto;object-fit:contain;"></div>
+            <div class="logo-item">
+                <img src="images/min1.jpg" class="nav-logo" 
+                    style="height:54px;padding-left:10px"></div>
+                    <!-- Search icon -->
+                    <i class="bi bi-search fs-4 mx-3 nav-search-icon" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#searchModal"
+                    style="cursor:pointer;"></i>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== PAGE: GALLERY COLLECTION (DETAIL) ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="gallery.html">Gallery</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Water Quality Sampling — Autumn 2025</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="row g-4 align-items-start mb-4">
+            <div class="col-lg-8">
+                <h1 class="fw-bold mb-2">Water Quality Sampling — Autumn 2025</h1>
+                <p class="text-muted mb-0" style="font-size:1.05rem; line-height:1.6;">
+                    A photo collection from a monitoring mission focusing on turbidity, nutrients, and sampling workflow at
+                    key stations along the Dniester. Replace titles, dates, and locations with your real content.
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex justify-content-between align-items-start gap-3">
+                        <div>
+                            <div class="text-muted small mb-1">Collection</div>
+                            <div class="fw-semibold">Monitoring mission</div>
+                        </div>
+                        <span class="badge text-bg-secondary">2025</span>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="vstack gap-2 small">
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-calendar3"></i></div>
+                            <div><span class="fw-semibold">Date:</span> 12–15 Oct 2025</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-geo-alt"></i></div>
+                            <div><span class="fw-semibold">Area:</span> Middle Dniester</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-images"></i></div>
+                            <div><span class="fw-semibold">Photos:</span> 18</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-person"></i></div>
+                            <div><span class="fw-semibold">Credits:</span> Secretariat / Partners</div>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-download me-1"></i> Download ZIP</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-share me-1"></i> Share</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="gallery.html"><i class="bi bi-arrow-left me-1"></i> Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-lg-6">
+                    <label class="form-label small text-muted mb-1" for="photoSearch">Search within this collection</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input id="photoSearch" type="text" class="form-control" placeholder="e.g. station, equipment, river, sample bottle" value="">
+                        <button id="photoSearchBtn" class="btn btn-secondary" type="button">Apply</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <label class="form-label small text-muted mb-1" for="photoTag">Tag</label>
+                    <select id="photoTag" class="form-select">
+                        <option value="all" selected>All tags</option>
+                        <option value="sampling">Sampling</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="river">River</option>
+                        <option value="lab">Laboratory</option>
+                        <option value="team">Team</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <label class="form-label small text-muted mb-1" for="photoSort">Sort</label>
+                    <select id="photoSort" class="form-select">
+                        <option selected>Order in collection</option>
+                        <option>Newest first</option>
+                        <option>Oldest first</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge text-bg-secondary">Monitoring</span>
+                <span class="badge text-bg-secondary">Water quality</span>
+                <span class="badge text-bg-secondary">Sampling</span>
+                <span class="badge text-bg-secondary">Field work</span>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <section class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0">Photos</h2>
+                <div class="text-muted small">Tip: click a photo to preview, use arrow keys in modal.</div>
+            </div>
+
+            <div class="gallery-masonry" id="photoGrid">
+
+                <a href="#" class="gallery-item" data-title="Sampling at Station #12" data-meta="Oct 2025 · Tag: sampling" data-tags="sampling,river" data-img="images/g1.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g1.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Sampling at Station #12</div>
+                        <div class="small text-muted">Tag: sampling</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Measuring turbidity" data-meta="Oct 2025 · Tag: equipment" data-tags="equipment,team" data-img="images/g2.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g2.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Measuring turbidity</div>
+                        <div class="small text-muted">Tag: equipment</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="River bank conditions" data-meta="Oct 2025 · Tag: river" data-tags="river" data-img="images/g3.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g3.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">River bank conditions</div>
+                        <div class="small text-muted">Tag: river</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Sample labeling" data-meta="Oct 2025 · Tag: sampling" data-tags="sampling,equipment" data-img="images/g4.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g4.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Sample labeling</div>
+                        <div class="small text-muted">Tag: sampling</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Field team briefing" data-meta="Oct 2025 · Tag: team" data-tags="team" data-img="images/g5.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g5.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Field team briefing</div>
+                        <div class="small text-muted">Tag: team</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Laboratory preparation" data-meta="Oct 2025 · Tag: lab" data-tags="lab,equipment" data-img="images/g2.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g2.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Laboratory preparation</div>
+                        <div class="small text-muted">Tag: lab</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Station overview" data-meta="Oct 2025 · Tag: river" data-tags="river,sampling" data-img="images/g1.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g1.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Station overview</div>
+                        <div class="small text-muted">Tag: river</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Equipment checklist" data-meta="Oct 2025 · Tag: equipment" data-tags="equipment" data-img="images/g3.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g3.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Equipment checklist</div>
+                        <div class="small text-muted">Tag: equipment</div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Bottom -->
+        <section class="mb-0">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <h3 class="h5 fw-bold mb-2">Notes</h3>
+                        <p class="mb-0 text-muted" style="line-height:1.7;">
+                            Use this area for short context: stations visited, sampling protocol, partners involved, and links to
+                            related news or documents. The structure is designed to work well for institutional reporting.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-0" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="p-3 p-md-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h3 class="h5 fw-bold mb-1">Map</h3>
+                                <p class="text-muted small mb-0">Preview map placeholder (optional).</p>
+                            </div>
+                            <a href="gallery.html#dniesterMap" class="btn btn-sm btn-outline-secondary">Open full map</a>
+                        </div>
+                        <div id="collectionMap" style="height: 280px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+        <!-- Bottom navigation -->
+        <nav class="mt-5" aria-label="Gallery collection navigation">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 p-3 p-md-4"
+                 style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                <a class="text-decoration-none d-flex align-items-center gap-2" href="#">
+                    <i class="bi bi-arrow-left"></i>
+                    <div>
+                        <div class="text-muted small">Previous collection</div>
+                        <div class="fw-semibold">Spring Flood Monitoring — 2024</div>
+                    </div>
+                </a>
+
+                <a class="btn btn-outline-secondary" href="gallery.html">
+                    <i class="bi bi-grid-3x3-gap me-2"></i> Back to Gallery
+                </a>
+
+                <a class="text-decoration-none d-flex align-items-center gap-2 text-md-end justify-content-md-end" href="#">
+                    <div>
+                        <div class="text-muted small">Next collection</div>
+                        <div class="fw-semibold">Dniester Delta Landscapes — 2025</div>
+                    </div>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </nav>
+
+
+    </main>
+
+    <!-- Photo Viewer Modal -->
+    <div class="modal fade" id="photoViewer" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="border-radius:0;">
+                <div class="modal-header d-flex align-items-center">
+                    <div>
+                        <h5 class="modal-title mb-0" id="viewerTitle">Photo</h5>
+                        <div class="text-muted small" id="viewerMeta"></div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 ms-auto">
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="viewerPrev" aria-label="Previous">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="viewerNext" aria-label="Next">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <img id="viewerImg" src="" alt="Photo preview" class="img-fluid w-100">
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div class="text-muted small" id="viewerIndex">1 / 1</div>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-sm btn-outline-secondary" href="#" id="viewerOpenOriginal"><i class="bi bi-box-arrow-up-right me-1"></i> Open</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="#" id="viewerDownload"><i class="bi bi-download me-1"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- ========== FOOTER ========== -->
+    <footer class="pt-5 mt-5">
+
+        <div class="container">
+
+
+        <!-- PARTNER LOGOS -->
+        <div class="eo-footer-partners d-flex flex-wrap justify-content-center align-items-center gap-4 mt-4 mb-4">
+
+            <img src="images/mindovkillya-logo.png" alt="Partner 1" class="eo-partner-logo">
+            <img src="images/ministerul_mediului_logo.jpg" alt="Partner 2" class="eo-partner-logo">
+            <img src="images/p3.png" alt="Partner 3" class="eo-partner-logo">
+            <img src="images/undp-logo.png" alt="UNDP" class="eo-partner-logo">
+            <img src="images/OSCE_LT_ENG_RGB.png" alt="OSCE" class="eo-partner-logo" style="height: 36px;">
+            <img src="images/unece.svg" alt="Partner 6" class="eo-partner-logo">
+
+        </div>
+
+            <!-- <div class="footer-top d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                <div class="d-flex gap-3">
+                <a href="#"><i class="bi bi-facebook fs-4"></i></a>
+                <a href="#"><i class="bi bi-instagram fs-4"></i></a>
+                <a href="#"><i class="bi bi-youtube fs-4"></i></a>
+                <a href="#"><i class="bi bi-threads fs-4"></i></a>
+            </div> -->
+
+            <div class="row">
+
+                <div class="col-md-3 mb-4">
+                    <!-- <h5 class="text-white fw-bold">Main Sections</h5> -->
+                    
+                    <ul class="list-unstyled">
+                        <li><a href="#">News & Events</a></li>
+                        <li><a href="#">Activities & Cooperation</a></li>
+                        <li><a href="#">Data & Resources</a></li>
+                        <li><a href="#">About the Dniester Commission</a></li>
+                        <li><a href="#">Contact & Engagement</a></li>
+                    </ul>
+
+                    <div class="d-flex gap-4 mt-3">
+                        <a href="#"><i class="bi bi-facebook fs-4 bi-footer"></i></a>
+                        <a href="#"><i class="bi bi-instagram fs-4 bi-footer"></i></a>
+                        <a href="#"><i class="bi bi-youtube fs-4 bi-footer"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x fs-4 bi-footer"></i></a>
+                        <a href="#"><i class="bi bi-threads fs-4 bi-footer"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <!-- <h5 class="text-white fw-bold">Contacts</h5> -->
+                    <p>Address line 1<br>City, Country</p>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +555 123 456 789</p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <!-- <h5 class="text-white fw-bold">About</h5> -->
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <!-- <h5 class="text-white fw-bold">Links</h5> -->
+                    <!-- <ul class="list-unstyled">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul> -->
+                    <img src="images/smallmap.png" class="img-fluid" alt="">
+                </div>
+
+            </div>
+
+            <div class="text-center mt-4 pb-3">
+                © 2025 Dniester Commission. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+
+<!-- SEARCH MODAL -->
+<div class="modal fade" id="searchModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content p-3">
+
+      <div class="modal-header border-0">
+        <h5 class="modal-title d-flex align-items-center gap-2">
+            <i class="bi bi-search"></i> Search
+            <span class="badge bg-info">AI Assistant — Beta</span>
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Search input -->
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" 
+                   placeholder="water quality monitoring">
+        </div>
+
+        <!-- Divider -->
+        <hr>
+
+        <!-- Fake AI answer -->
+        <div class="ai-answer">
+            <p>
+                <strong>AI Assistant:</strong><br>
+                Based on your query about 
+                <mark>water quality monitoring</mark>,  
+                here are the most relevant sections of the website:
+            </p>
+
+            <ul>
+                <li>
+                    <a href="#">Water Quality Reports</a> — annual and quarterly analytical reports.
+                </li>
+                <li>
+                    <a href="#">Monitoring → Hydrology</a> — water level and flow measurements.
+                </li>
+                <li>
+                    <a href="#">Projects → Ongoing</a> — active cross-border environmental initiatives.
+                </li>
+            </ul>
+
+            <p>
+                You may also be interested in  
+                <mark>ecological assessment</mark> of the Dniester basin.
+            </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+    const switcher = document.getElementById("themeSwitcher");
+    const themeIcon = document.getElementById("themeIcon");
+    const root = document.documentElement;
+
+    let savedTheme = localStorage.getItem("theme") || "dark";
+    root.setAttribute("data-bs-theme", savedTheme);
+    updateIcon(savedTheme);
+
+    switcher.addEventListener("click", () => {
+        let current = root.getAttribute("data-bs-theme");
+        let next = current === "dark" ? "light" : "dark";
+
+        root.setAttribute("data-bs-theme", next);
+        localStorage.setItem("theme", next);
+        updateIcon(next);
+    });
+
+    function updateIcon(theme) {
+        if (theme === "light") {
+            themeIcon.className = "bi bi-sun-fill";
+        } else {
+            themeIcon.className = "bi bi-moon-fill";
+        }
+    }
+</script>
+
+
+<script>
+document.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
+
+    let timer;
+
+    item.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            menu.classList.add('show');
+            menu.style.opacity = "1";
+            menu.style.transform = "translateY(0)";
+            menu.style.pointerEvents = "auto";
+        }
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180); // ← достаточно чтобы пользователь успел дойти
+        }
+    });
+
+    // Если мышь заходит назад в меню — не закрываем
+    const menu = item.querySelector('.dropdown-menu');
+    if (menu) {
+        menu.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+        });
+        menu.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180);
+        });
+    }
+
+});
+
+
+</script>
+
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const items = Array.from(document.querySelectorAll(".gallery-item"));
+    const searchEl = document.getElementById("photoSearch");
+    const tagEl = document.getElementById("photoTag");
+    const applyBtn = document.getElementById("photoSearchBtn");
+
+    const viewerModalEl = document.getElementById("photoViewer");
+    const viewerTitle = document.getElementById("viewerTitle");
+    const viewerMeta = document.getElementById("viewerMeta");
+    const viewerImg = document.getElementById("viewerImg");
+    const viewerIndex = document.getElementById("viewerIndex");
+    const btnPrev = document.getElementById("viewerPrev");
+    const btnNext = document.getElementById("viewerNext");
+    const btnOpen = document.getElementById("viewerOpenOriginal");
+    const btnDownload = document.getElementById("viewerDownload");
+
+    let activeList = items.slice();
+    let currentIdx = 0;
+    let modal;
+
+    function applyFilters() {
+        const q = (searchEl?.value || "").trim().toLowerCase();
+        const tag = tagEl?.value || "all";
+
+        activeList = [];
+
+        items.forEach((a) => {
+            const title = (a.dataset.title || "").toLowerCase();
+            const meta = (a.dataset.meta || "").toLowerCase();
+            const tags = (a.dataset.tags || "").toLowerCase();
+
+            const okQuery = !q || title.includes(q) || meta.includes(q) || tags.includes(q);
+            const okTag = (tag === "all") || tags.split(",").map(t => t.trim()).includes(tag);
+
+            const visible = okQuery && okTag;
+            a.classList.toggle("d-none", !visible);
+            if (visible) activeList.push(a);
+        });
+
+        if (activeList.length) currentIdx = 0;
+    }
+
+    applyBtn?.addEventListener("click", applyFilters);
+
+    function openAt(idx) {
+        if (!activeList.length) return;
+
+        currentIdx = Math.max(0, Math.min(idx, activeList.length - 1));
+        const el = activeList[currentIdx];
+
+        viewerTitle.textContent = el.dataset.title || "Photo";
+        viewerMeta.textContent = el.dataset.meta || "";
+        const src = el.dataset.img || "";
+        viewerImg.src = src;
+        viewerIndex.textContent = `${currentIdx + 1} / ${activeList.length}`;
+
+        btnOpen.href = src;
+        btnDownload.href = src;
+
+        if (!modal) modal = new bootstrap.Modal(viewerModalEl);
+        modal.show();
+    }
+
+    items.forEach(a => {
+        a.addEventListener("click", (e) => {
+            e.preventDefault();
+            const idx = activeList.indexOf(a);
+            openAt(idx >= 0 ? idx : 0);
+        });
+    });
+
+    btnPrev?.addEventListener("click", () => openAt(currentIdx - 1));
+    btnNext?.addEventListener("click", () => openAt(currentIdx + 1));
+
+    document.addEventListener("keydown", (e) => {
+        if (!viewerModalEl.classList.contains("show")) return;
+        if (e.key === "ArrowLeft") openAt(currentIdx - 1);
+        if (e.key === "ArrowRight") openAt(currentIdx + 1);
+    });
+
+
+    // ====== Mini map (OpenStreetMap preview) ======
+    const mapEl = document.getElementById("collectionMap");
+    if (mapEl) {
+        const map = L.map("collectionMap", { scrollWheelZoom: false }).setView([47.2, 29.6], 7);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 18,
+            attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+
+        // Link a few photos to coordinates (demo). Replace with real EXIF/coords later.
+        const geo = [
+            { key: "Sampling at Station #12", lat: 47.00, lon: 28.86 },
+            { key: "Measuring turbidity", lat: 48.45, lon: 27.74 },
+            { key: "River bank conditions", lat: 46.60, lon: 30.20 },
+            { key: "Commission meeting", lat: 47.01, lon: 28.86 }
+        ];
+
+        geo.forEach(p => {
+            const marker = L.marker([p.lat, p.lon]).addTo(map);
+
+            // Find matching gallery item by title (key)
+            const match = items.find(i => (i.dataset.title || "") === p.key);
+
+            const thumb = match?.dataset.img || "images/g1.jpg";
+            const meta = match?.dataset.meta || "";
+
+            marker.bindPopup(`
+                <div style="width:220px;">
+                    <div style="background-image:url('${thumb}'); background-size:cover; background-position:center; height:110px; width:100%; margin-bottom:8px;"></div>
+                    <div style="font-weight:600; margin-bottom:4px;">${p.key}</div>
+                    <div style="font-size:12px; color:#6c757d; margin-bottom:8px;">${meta}</div>
+                    <button class="btn btn-sm btn-outline-secondary w-100 js-open-photo">Open photo</button>
+                </div>
+            `);
+
+            marker.on("popupopen", (e) => {
+                const node = e.popup.getElement();
+                const btn = node?.querySelector(".js-open-photo");
+                if (!btn) return;
+
+                btn.addEventListener("click", () => {
+                    if (!match) return;
+                    // open viewer for this item
+                    const idx = activeList.indexOf(match);
+                    openAt(idx >= 0 ? idx : 0);
+                }, { once: true });
+            });
+        });
+    }
+
+
+    applyFilters();
+});
+</script>
+
+</body>
+</html>

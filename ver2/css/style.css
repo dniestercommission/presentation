@@ -9,7 +9,7 @@ html {
     --text-muted: #b0b0b0;
     --border-color: #333;
     --icon-color: #eaeaea;
-    --icon-footer-color: #f0f0f0;
+    --icon-footer-color: #f0f0f0de;
     --icon-footer-hover-color: #ffffff;
     --icon-hover-color: #ffffff;
 }
@@ -22,7 +22,7 @@ html[data-bs-theme="light"] {
     --text-color: #111111;
     --text-inverse: #f0f0f0;
     --text-muted: #555555;
-    --border-color: #ccc;
+    --border-color: #ddd;
     --icon-color: #222222;
     --icon-footer-color: #f0f0f0;
     --icon-footer-hover-color: #ffffff;
@@ -622,4 +622,173 @@ footer a:hover {
     .eo-partner-logo {
         height: 32px;
     }
+}
+
+
+
+
+/* ===== Gallery page ===== */
+.gallery-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform .22s ease, box-shadow .22s ease;
+    height: 100%;
+}
+.gallery-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+.gallery-card-img {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+.gallery-card-compact .gallery-card-img {
+    height: 180px;
+}
+.gallery-card-body {
+    padding: 14px 16px;
+}
+.map-wrap {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+
+
+/* ===== Gallery detail ===== */
+.gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+@media (max-width: 1200px) {
+    .gallery-masonry { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 992px) {
+    .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+    .gallery-masonry { grid-template-columns: 1fr; }
+}
+
+.gallery-item {
+    display: block;
+    text-decoration: none;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform .22s ease, box-shadow .22s ease;
+    color: inherit;
+}
+.gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+.gallery-thumb {
+    width: 100%;
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+}
+.gallery-caption {
+    padding: 12px 14px;
+}
+
+
+/* Modal header: keep controls to the right cleanly */
+#photoViewer .modal-header { gap: 12px; }
+#photoViewer .btn-close { margin-left: 0; }
+
+
+/* ===== Home: News + Featured ===== */
+.news-card{
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  transition: transform .22s ease, box-shadow .22s ease;
+  color: inherit;
+}
+.news-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+.news-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+}
+
+.news-featured .news-media{
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+}
+.news-featured .news-body{
+  padding: 16px 18px;
+}
+@media (min-width: 992px){
+  .news-featured .news-media{ height: 360px; }
+  .news-featured .news-body{ padding: 18px 22px; }
+}
+
+/* Mini list items */
+.news-mini{
+  display:flex;
+  gap: 14px;
+  padding: 0;
+  overflow:hidden;
+}
+.news-mini-media{
+  width: 140px;
+  min-width: 140px;
+  background-size: cover;
+  background-position: center;
+}
+.news-mini-body{
+  padding: 14px 14px 14px 0;
+}
+@media (max-width: 576px){
+  .news-mini{ flex-direction: column; gap: 0; }
+  .news-mini-media{ width:100%; min-width: 100%; height: 170px; }
+  .news-mini-body{ padding: 14px; }
+}
+
+/* ===== Home: Full-bleed split hero ===== */
+.hero-split{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  min-height: 520px;
+  width: 100%;
+}
+.hero-split-reverse{
+  grid-template-columns: .9fr 1.1fr;
+}
+.hero-split-reverse .hero-split-media{ order: 2; }
+.hero-split-reverse .hero-split-content{ order: 1; }
+
+.hero-split-media{
+  background-size: cover;
+  background-position: center;
+  min-height: 360px;
+}
+.hero-split-content{
+  padding: 48px 48px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+@media (max-width: 992px){
+  .hero-split, .hero-split-reverse{
+    grid-template-columns: 1fr;
+  }
+  .hero-split-reverse .hero-split-media,
+  .hero-split-reverse .hero-split-content{
+    order: initial;
+  }
+  .hero-split-content{
+    padding: 28px 18px;
+  }
 }
