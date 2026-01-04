@@ -12,6 +12,14 @@ html {
     --icon-footer-color: #f0f0f0de;
     --icon-footer-hover-color: #ffffff;
     --icon-hover-color: #ffffff;
+
+    --brand: #007bc5;
+
+    /* Secondary palette (make pagination + checkboxes match your buttons) */
+    --secondary-bg: #6c757d;
+    --secondary-bg-hover: #5f676f;
+    --secondary-border: #6c757d;
+    --secondary-text: #ffffff;
 }
 
 html[data-bs-theme="light"] {
@@ -27,11 +35,19 @@ html[data-bs-theme="light"] {
     --icon-footer-color: #f0f0f0;
     --icon-footer-hover-color: #ffffff;
     --icon-hover-color: #000000;
+
+    --brand: #007bc5;
+
+    /* Secondary palette (same as dark unless you want a different gray in light) */
+    --secondary-bg: #6c757d;
+    --secondary-bg-hover: #5f676f;
+    --secondary-border: #6c757d;
+    --secondary-text: #ffffff;
 }
 
-html[data-bs-theme="light"] .navbar .dropdown-menu {
-    background: rgba(255, 255, 255, 1);
-}
+/* html[data-bs-theme="light"] .navbar .dropdown-menu {
+    background: rgb(13, 6, 6);
+} */
 
 
 body {
@@ -314,11 +330,6 @@ body {
 
 
 
-
-
-
-
-
 /* Links */
 a { color: var(--text-color); }
 a:hover { color: var(--text-muted); }
@@ -394,7 +405,7 @@ footer a:hover {
 
 .logo-overlay {
     position: absolute;
-    top: 1em;               
+    top: 1em;
     right: 0;
     z-index: 20;
     width: auto;
@@ -484,8 +495,6 @@ footer a:hover {
 
 
 
-
-
 @media (max-width: 992px) {
     .navbar .dropdown-menu::before {
         display: none;
@@ -496,7 +505,7 @@ footer a:hover {
         /* border-radius: 6px; */
         border-radius: 1px;
         margin-top: 4px;
-    }    
+    }
 }
 
 
@@ -791,4 +800,58 @@ footer a:hover {
   .hero-split-content{
     padding: 28px 18px;
   }
+}
+
+/* ===== Buttons: ensure secondary matches our variable (optional but keeps everything consistent) ===== */
+.btn-secondary{
+  background: var(--secondary-bg) !important;
+  border-color: var(--secondary-border) !important;
+  color: var(--secondary-text) !important;
+}
+.btn-secondary:hover,
+.btn-secondary:focus{
+  background: var(--secondary-bg-hover) !important;
+  border-color: var(--secondary-bg-hover) !important;
+  color: var(--secondary-text) !important;
+}
+
+/* ===== Pagination: match btn-secondary exactly ===== */
+.pagination .page-link{
+  background: var(--secondary-bg);
+  border-color: var(--secondary-border);
+  color: var(--secondary-text);
+}
+.pagination .page-link:hover{
+  background: var(--secondary-bg-hover);
+  border-color: var(--secondary-bg-hover);
+  color: var(--secondary-text);
+}
+.pagination .page-item.active .page-link{
+  background: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}
+.pagination .page-item.disabled .page-link{
+  opacity: .55;
+  background: var(--secondary-bg);
+  border-color: var(--secondary-border);
+  color: var(--secondary-text);
+}
+
+/* ===== Checkboxes / radios: match secondary when checked ===== */
+.form-check-input{
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+.form-check-input:checked{
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-border);
+}
+.form-check-input:focus{
+  border-color: var(--secondary-border);
+  box-shadow: 0 0 0 .2rem rgba(108,117,125,.25);
+}
+.form-switch .form-check-input:checked{
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-border);
 }
