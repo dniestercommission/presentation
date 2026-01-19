@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% set title = "Search" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: SEARCH ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- Page header -->
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">Search</h1>
+                <p class="text-muted mb-0">Find news, events, documents, datasets, and pages across the website.</p>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+            <form class="row g-2 align-items-center" action="#" method="get">
+                <div class="col-12 col-lg-8">
+                    <label class="form-label small text-muted mb-1" for="q">Search query</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input id="q" name="q" type="text" class="form-control"
+                               value="sediment plumes"
+                               placeholder="Try: monitoring indicators, annual report, GIS layers">
+                        <button class="btn btn-secondary" type="submit">Search</button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <label class="form-label small text-muted mb-1">AI Assistant</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge text-bg-warning">Beta</span>
+                        <span class="text-muted small">Use AI-assisted search in the modal.</span>
+                        <button class="btn btn-outline-secondary btn-sm ms-auto" type="button"
+                                data-bs-toggle="modal" data-bs-target="#searchModal">
+                            Open AI Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- LEFT: FILTERS -->
+            <aside class="col-lg-4 order-2 order-lg-1">
+
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Refine results</h5>
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="small text-muted mb-2">Search in</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="inNews" checked>
+                            <label class="form-check-label" for="inNews">News</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="inEvents" checked>
+                            <label class="form-check-label" for="inEvents">Events</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="inDocs" checked>
+                            <label class="form-check-label" for="inDocs">Documents</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="inPages">
+                            <label class="form-check-label" for="inPages">Pages</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="inData">
+                            <label class="form-check-label" for="inData">Datasets</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small text-muted" for="type">Content type</label>
+                        <select id="type" class="form-select">
+                            <option selected>All</option>
+                            <option>News</option>
+                            <option>Event</option>
+                            <option>Document</option>
+                            <option>Publication</option>
+                            <option>Dataset</option>
+                            <option>Page</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small text-muted">Date range</label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input type="date" class="form-control" value="2025-01-01">
+                            </div>
+                            <div class="col-6">
+                                <input type="date" class="form-control" value="2025-12-31">
+                            </div>
+                        </div>
+                        <div class="form-text">Use dates to narrow down results.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small text-muted" for="sort">Sort</label>
+                        <select id="sort" class="form-select">
+                            <option selected>Relevance</option>
+                            <option>Newest first</option>
+                            <option>Oldest first</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-outline-secondary" type="button">Apply filters</button>
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <!-- RIGHT: RESULTS -->
+            <section class="col-lg-8 order-1 order-lg-2">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <div class="text-muted small">
+                        Showing <strong>8</strong> results for <strong>“sediment plumes”</strong>
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="View mode">
+                        <button type="button" class="btn btn-outline-secondary btn-sm active">List</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm">Cards</button>
+                    </div>
+                </div>
+
+                <!-- Result item -->
+                <article class="p-0 mb-3" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-4 col-md-3">
+                            <div style="background-image:url('images/slide1.png'); background-size:cover; background-position:center; width:100%; height:100%; min-height:120px;"></div>
+                        </div>
+                        <div class="col-8 col-md-9 p-3 p-md-4">
+                            <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                                <span class="badge text-bg-secondary">News</span>
+                                <span><i class="bi bi-calendar3 me-1"></i> 26 Nov 2025</span>
+                                <span class="d-none d-sm-inline">•</span>
+                                <span class="text-muted">/news/commission-summit</span>
+                            </div>
+                            <h2 class="h5 fw-bold mb-2">
+                                <a href="news.html" class="text-decoration-none">Commission Holds Environmental Summit in Chisinau</a>
+                            </h2>
+                            <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                                Satellite observations reveal seasonal changes in water color, <mark>sediment plumes</mark>,
+                                and ecological dynamics along the lower Dniester River.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="p-3 p-md-4 mb-3" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                        <span class="badge text-bg-secondary">Document</span>
+                        <span><i class="bi bi-calendar3 me-1"></i> 12 Nov 2025</span>
+                        <span class="d-none d-sm-inline">•</span>
+                        <span class="text-muted">/documents/monitoring/annual</span>
+                    </div>
+                    <h2 class="h5 fw-bold mb-2">
+                        <a href="#" class="text-decoration-none">Annual Monitoring Summary (PDF)</a>
+                    </h2>
+                    <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                        A technical summary describing monitoring stations, indicators, and observed river conditions,
+                        including sections on <mark>sediment</mark> transport and water color.
+                    </p>
+                    <div class="mt-3">
+                        <a class="btn btn-sm btn-outline-secondary" href="#"><i class="bi bi-file-earmark-arrow-down me-1"></i> Download</a>
+                    </div>
+                </article>
+
+                <article class="p-3 p-md-4 mb-3" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                        <span class="badge text-bg-secondary">Dataset</span>
+                        <span><i class="bi bi-calendar3 me-1"></i> 2023–2025</span>
+                        <span class="d-none d-sm-inline">•</span>
+                        <span class="text-muted">/gis/datasets/sediment-index</span>
+                    </div>
+                    <h2 class="h5 fw-bold mb-2">
+                        <a href="#" class="text-decoration-none">Sediment Index (Raster Layer)</a>
+                    </h2>
+                    <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                        Raster layer derived from satellite imagery to identify areas of higher turbidity and
+                        potential <mark>sediment plume</mark> patterns near the estuary.
+                    </p>
+                </article>
+
+                <article class="p-3 p-md-4 mb-3" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                        <span class="badge text-bg-secondary">Page</span>
+                        <span><i class="bi bi-calendar3 me-1"></i> Updated 05 Oct 2025</span>
+                        <span class="d-none d-sm-inline">•</span>
+                        <span class="text-muted">/monitoring/water-quality</span>
+                    </div>
+                    <h2 class="h5 fw-bold mb-2">
+                        <a href="#" class="text-decoration-none">Monitoring: Water Quality</a>
+                    </h2>
+                    <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                        Learn how the Commission monitors water quality, turbidity, and seasonal changes including
+                        <mark>sediment</mark> dynamics.
+                    </p>
+                </article>
+
+                <!-- Pagination -->
+                <nav class="mt-4" aria-label="Search pagination">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Empty state example (hidden for now) -->
+                <div class="d-none p-3 p-md-4 mt-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-2">No results found</h5>
+                    <p class="mb-0 text-muted">
+                        Try broader keywords, adjust filters, or use the AI-assisted search.
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+
+{% endblock %}

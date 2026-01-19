@@ -1,0 +1,71 @@
+/* Classic card dropdown */
+.navbar .dropdown-menu {
+  background: var(--card-bg);
+  border: none !important;
+  border-radius: 1px;
+  padding: 10px 0;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.10),
+    0 8px 32px rgba(0,0,0,0.15);
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: all 0.25s ease-out;
+  pointer-events: none;
+  margin-top: 6px;
+}
+
+.navbar .dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 24px;
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--card-bg);
+
+  filter: drop-shadow(0px -1px 1px rgba(0,0,0,0.15));
+}
+
+/* Show on hover + bootstrap show */
+.nav-item.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown .dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Ensure hover works consistently */
+.nav-item.dropdown:hover > .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 10px 20px;
+  color: var(--text-color);
+}
+.dropdown-menu .dropdown-item:hover {
+  color: var(--text-color);
+}
+
+.dropdown-menu-dark {
+  background: var(--card-bg) !important;
+  border-color: var(--border-color);
+}
+
+@media (max-width: 992px) {
+  .navbar .dropdown-menu::before {
+    display: none;
+  }
+
+  .nav-accent-gis > a,
+  .nav-accent-his > a {
+    border-radius: 1px;
+    margin-top: 4px;
+  }
+}

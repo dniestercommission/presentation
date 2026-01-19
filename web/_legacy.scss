@@ -1,0 +1,625 @@
+/* Default theme variables (dark by default) */
+html {
+    --bg-color: #0f0f0f;
+    --bg-secondary: #181818;
+    --bg-footer: #0c0e11;
+    --card-bg: #1f1f1f;
+    --text-color: #f0f0f0;
+    --text-inverse: #f0f0f0;
+    --text-muted: #b0b0b0;
+    --border-color: #333;
+    --icon-color: #eaeaea;
+    --icon-footer-color: #f0f0f0;
+    --icon-footer-hover-color: #ffffff;
+    --icon-hover-color: #ffffff;
+}
+
+html[data-bs-theme="light"] {
+    --bg-color: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-footer: #152538;
+    --card-bg: #ffffff;
+    --text-color: #111111;
+    --text-inverse: #f0f0f0;
+    --text-muted: #555555;
+    --border-color: #ccc;
+    --icon-color: #222222;
+    --icon-footer-color: #f0f0f0;
+    --icon-footer-hover-color: #ffffff;
+    --icon-hover-color: #000000;
+}
+
+html[data-bs-theme="light"] .navbar .dropdown-menu {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 1s, color 1s;
+}
+
+/* ===== TOPBAR (верхняя панель) ===== */
+/* ===== Верхнее вспомогательное меню ===== */
+
+.topbar {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    /* padding: 4px 14px; */
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.78rem;                   /* уменьшили весь текст */
+}
+
+/* Иконки соцсетей уменьшили */
+.topbar i {
+    /* font-size: 0.9rem !important; */
+    color: var(--icon-color);
+    /* opacity: 0.9; */
+}
+
+.topbar i:hover {
+    opacity: 1;
+}
+
+/* Блок языков */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;                              /* маленький отступ */
+}
+
+/* Сами языки — ссылки */
+.lang-option {
+    padding: 2px 6px;
+    font-size: 0.78rem;
+    color: var(--text-color);
+    text-decoration: none;
+    /* border-radius: 4px; */
+    border-radius: 1px;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+/* Hover */
+.lang-option:hover {
+    background: #0dcaf0;
+    color: var(--text-inverse);
+}
+
+/* Активный язык — выделен "пилюлькой" */
+.active-lang {
+    background: #007bc5;
+    color: var(--text-inverse);
+    /* border-radius: 4px; */
+    border-radius: 1px;
+}
+.active-lang:hover {
+    background: #007bc5;
+    color: var(--text-inverse);
+    /* border-radius: 4px; */
+    border-radius: 1px;
+}
+
+
+
+/* User icon чуть меньше */
+.user-icon {
+    font-size: 1.2rem !important;
+    color: var(--icon-color);
+    /* opacity: 0.9; */
+}
+
+.user-icon:hover {
+    opacity: 1;
+}
+
+
+
+
+
+/* Navbar */
+.navbar .dropdown-toggle::after {
+    display: none !important;
+}
+.navbar {
+    background: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: var(--text-color);
+    font-weight: 600;
+    /* transition: color 0.25s; */
+}
+
+.theme-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-btn i {
+    font-size: 20px;
+}
+
+
+/* ===== ACCENT MENU ITEMS ===== */
+
+.nav-accent-gis > a {
+    background: #007bc5 !important;
+    color: var(--text-inverse) !important;
+    /* border-radius: 4px; */
+    border-radius: 1px;
+    padding: 6px 12px !important;
+    transition: 0.2s;
+}
+
+.nav-accent-his > a {
+    background: #0dcaf0 !important;
+    color: var(--text-inverse) !important;
+    /* border-radius: 4px; */
+    border-radius: 1px;
+    padding: 6px 12px !important;
+    transition: 0.2s;
+}
+
+.nav-accent-gis > a:hover {
+    filter: brightness(1.1);
+}
+
+.nav-accent-his > a:hover {
+    filter: brightness(1.1);
+}
+
+/* ===== MODERN macOS DROPDOWN ===== */
+
+
+/* ===== Clean dropdown (classic macOS-style card) ===== */
+.navbar .dropdown-menu {
+    background: var(--card-bg); /* в light будет белым, в dark — мягкий тёмный */
+    border: none !important;
+    /* border-radius: 12px; */
+    border-radius: 1px;
+    padding: 10px 0;
+
+    /* Мягкие premium тени */
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.10),
+        0 8px 32px rgba(0,0,0,0.15);
+
+    /* Анимация */
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: all 0.25s ease-out;
+    pointer-events: none;
+}
+
+
+
+/* ===== White pointer (triangle) ===== */
+.navbar .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 24px; /* можно настроить */
+
+    width: 0;
+    height: 0;
+
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--card-bg);
+
+    /* лёгкая тень снизу */
+    filter: drop-shadow(0px -1px 1px rgba(0,0,0,0.15));
+}
+
+
+/* Показываем dropdown при наведении */
+/* При появлении */
+.nav-item.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Чуть ниже основного меню */
+.navbar .dropdown-menu {
+    margin-top: 6px;
+}
+
+/* Стиль пунктов внутри */
+.dropdown-menu .dropdown-item {
+    padding: 10px 20px;
+    color: var(--text-color);
+}
+
+.dropdown-menu .dropdown-item:hover {
+    /* background: var(--border-color); */
+    color: var(--text-color);
+}
+
+.nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Search icon in navbar */
+.nav-search-icon {
+    color: var(--icon-color);
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+.nav-search-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Modal styles */
+.modal-content {
+    background: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+.modal .form-control {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.modal .form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.ai-answer mark {
+    background: #ffd54f;
+    color: #000;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.ai-answer a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.ai-answer a:hover {
+    color: var(--icon-hover-color);
+}
+
+
+/* Custom modal animation */
+.modal.fade .modal-dialog {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 0.35s ease;
+}
+
+.modal.show .modal-dialog {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional smoother backdrop */
+.modal-backdrop.show {
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+
+
+
+
+
+
+
+/* Links */
+a { color: var(--text-color); }
+a:hover { color: var(--text-muted); }
+
+/* Dropdown */
+.dropdown-menu-dark {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color);
+}
+
+/* Hero block */
+.hero-full {
+    background: var(--bg-secondary);
+}
+
+.hero-full .hero-content,
+.hero-full .col-md-6 {
+    color: var(--text-color);
+}
+
+
+
+/* Cards, news backgrounds */
+
+.news-large,
+.news-small,
+.card,
+.footer-top {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Footer */
+footer {
+    background: var(--bg-footer);
+    color: var(--text-inverse);
+}
+
+footer a {
+    color: var(--text-inverse);
+}
+
+footer a:hover {
+    color: var(--text-inverse);
+}
+
+/* Gallery */
+.gallery-grid .item {
+    border: 1px solid var(--border-color);
+}
+
+/* Icons */
+.bi {
+    color: var(--icon-color) !important;
+    transition: color 0.25s;
+}
+
+.bi:hover {
+    color: var(--icon-hover-color) !important;
+}
+
+.bi-footer {
+    color: var(--icon-footer-color) !important;
+    transition: color 0.25s;
+}
+
+.bi-footer:hover {
+    color: var(--icon-footer-hover-color) !important;
+}
+
+
+/* ===== LOGO PANEL OVER SLIDER ===== */
+
+.logo-overlay {
+    position: absolute;
+    top: 1em;               
+    right: 0;
+    z-index: 20;
+    width: auto;
+}
+
+.logo-overlay-inner {
+    background: white;
+    padding: 16px 26px;
+    border: 1px solid rgba(0,0,0,0.09);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    border-radius: 0;
+}
+
+.logo-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ==== smoother fade between slides ==== */
+.carousel-fade .carousel-item {
+    transition-duration: 2s;
+}
+.carousel-item {
+    background: transparent !important;
+}
+#mainSlider {
+    background: #555555/* мягкий тёмный фон, не бьёт по глазам */
+}
+
+/* ==== slide-up fade text animation ==== */
+.carousel-caption-custom {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.carousel-item.active .carousel-caption-custom {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==== breathing effect on captions ==== */
+.carousel-caption-custom span {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+@keyframes breathing {
+    0%   { opacity: 0.95; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+/* ==== Blur-Fade transition ==== */
+
+/* в неактивных слайдах */
+.carousel-slide-bg {
+    filter: blur(12px);
+    opacity: 0;
+    transition: opacity 1.2s ease, filter 1.2s ease;
+}
+
+/* активный слайд очищает blur и проявляется */
+.carousel-item.active .carousel-slide-bg {
+    filter: blur(0px);
+    opacity: 1;
+}
+
+/* fade работает вместе с эффектом из carousel-fade */
+.carousel-fade .carousel-item {
+    transition-duration: 1.2s;
+}
+.carousel-slide-bg {
+    will-change: opacity, filter;
+    position: absolute;
+    inset: 0;
+}
+.carousel-item {
+    position: relative;
+}
+.carousel-slide-bg {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+@media (max-width: 992px) {
+    .navbar .dropdown-menu::before {
+        display: none;
+    }
+
+    .nav-accent-gis > a,
+    .nav-accent-his > a {
+        /* border-radius: 6px; */
+        border-radius: 1px;
+        margin-top: 4px;
+    }    
+}
+
+
+/* ==== Carousel background image ==== */
+.carousel-slide-bg {
+    width: 100%;
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* ==== Custom caption container ==== */
+.carousel-caption-custom {
+    position: absolute;
+    top: 6rem;
+    left: 10em;
+    max-width: 520px;
+}
+
+/* ==== Dark label for title ==== */
+.news-title span {
+    background: #c00090;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    display: inline;
+    box-decoration-break: clone;   /* ← MAGIC */
+    -webkit-box-decoration-break: clone;
+}
+
+/* ==== Light label for preview text ==== */
+.news-teaser span {
+    background: rgba(255, 255, 255, 1);
+    color: #222;
+    padding: 6px 12px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    display: inline;
+    margin-top: 10px;
+    box-decoration-break: clone;   /* ← MAGIC */
+    -webkit-box-decoration-break: clone;
+}
+
+/* optional: soften and polish */
+.carousel-caption-custom span {
+    /* border-radius: 4px; */
+    border-radius: 1px;
+}
+
+
+.hero-full .hero-img {
+    height: 60vh; /* можно 100vh, 70vh, 50vh — как хочешь */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+.gallery-grid {
+    columns: 3;
+    column-gap: 16px;
+}
+
+.gallery-grid .item {
+    height: auto;
+    aspect-ratio: 1 / 1; /* или 4/5, 3/2, разные */
+    margin-bottom: 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+/* Make sure caption stays readable on all screens */
+@media (max-width: 768px) {
+    .carousel-caption-custom {
+        left: 20px;
+        right: 20px;
+        bottom: 40px;
+        max-width: 90%;
+    }
+
+    .news-title span {
+        font-size: 1.4rem;
+    }
+
+    .news-teaser span {
+        font-size: 1rem;
+    }
+}
+
+/* PARTNER LOGOS */
+.eo-footer-partners {
+    /* border-top: 1px solid rgba(255,255,255,0.15); */
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 0 50px 0;
+}
+
+.eo-partner-logo {
+    height: 89px;
+    width: auto;
+    /* opacity: 0.65; */
+    /* filter: brightness(0) invert(1); делаем логотипы белыми, как NASA */
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.eo-partner-logo:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Mobile: logos in 2 rows */
+@media (max-width: 768px) {
+    .eo-footer-partners {
+        justify-content: center;
+        gap: 22px;
+    }
+    .eo-partner-logo {
+        height: 32px;
+    }
+}

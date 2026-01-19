@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% set title = "News — Archive" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: NEWS LISTING (ARCHIVE) ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- Page header -->
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">News</h1>
+                <p class="text-muted mb-0">Official updates, press releases, and announcements.</p>
+            </div>
+
+            <!-- Quick search opens existing modal -->
+            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="bi bi-search me-2"></i> Search
+            </button>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- LIST -->
+            <section class="col-lg-8">
+
+                <!-- Featured / Top story -->
+                <article class="p-0 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <div style="background-image:url('images/slide1.png'); background-size:cover; background-position:center; width:100%; height:100%; min-height:220px;"></div>
+                        </div>
+                        <div class="col-md-7 p-3 p-md-4">
+                            <div class="text-muted small mb-2">
+                                <i class="bi bi-calendar3 me-1"></i> 26 November 2025
+                                <span class="mx-2">•</span>
+                                <span class="badge text-bg-secondary">News</span>
+                            </div>
+                            <h2 class="h4 fw-bold mb-2">
+                                <a href="news.html" class="text-decoration-none">Commission Holds Environmental Summit in Chisinau</a>
+                            </h2>
+                            <p class="mb-3">
+                                Experts discussed water management, new monitoring approaches and cross-border cooperation.
+                            </p>
+                            <a class="btn btn-sm btn-outline-secondary" href="news.html">Read more</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- List items -->
+                <div class="vstack gap-3">
+
+                    <article class="p-0" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="row g-0 align-items-stretch">
+                            <div class="col-4 col-md-3">
+                                <div style="background-image:url('images/news2.jpg'); background-size:cover; background-position:center; width:100%; height:100%; min-height:120px;"></div>
+                            </div>
+                            <div class="col-8 col-md-9 p-3 p-md-4">
+                                <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                                    <span><i class="bi bi-calendar3 me-1"></i> 14 Oct 2025</span>
+                                    <span class="d-none d-sm-inline">•</span>
+                                    <span class="badge text-bg-secondary">Update</span>
+                                </div>
+                                <h3 class="h5 fw-bold mb-2">
+                                    <a href="#" class="text-decoration-none">New GIS Layers Added to Monitoring Portal</a>
+                                </h3>
+                                <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                                    The update includes new datasets, refined layers, and improved metadata for public use.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="p-0" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="row g-0 align-items-stretch">
+                            <div class="col-4 col-md-3">
+                                <div style="background-image:url('images/news4.jpg'); background-size:cover; background-position:center; width:100%; height:100%; min-height:120px;"></div>
+                            </div>
+                            <div class="col-8 col-md-9 p-3 p-md-4">
+                                <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                                    <span><i class="bi bi-calendar3 me-1"></i> 02 Sep 2025</span>
+                                    <span class="d-none d-sm-inline">•</span>
+                                    <span class="badge text-bg-secondary">News</span>
+                                </div>
+                                <h3 class="h5 fw-bold mb-2">
+                                    <a href="#" class="text-decoration-none">Joint Field Mission: Water Quality Sampling</a>
+                                </h3>
+                                <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                                    Teams conducted sampling across multiple stations to validate seasonal indicators.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="p-0" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="row g-0 align-items-stretch">
+                            <div class="col-4 col-md-3">
+                                <div style="background-image:url('images/news1.jpg'); background-size:cover; background-position:center; width:100%; height:100%; min-height:120px;"></div>
+                            </div>
+                            <div class="col-8 col-md-9 p-3 p-md-4">
+                                <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-2">
+                                    <span><i class="bi bi-calendar3 me-1"></i> 30 Jun 2025</span>
+                                    <span class="d-none d-sm-inline">•</span>
+                                    <span class="badge text-bg-secondary">Publication</span>
+                                </div>
+                                <h3 class="h5 fw-bold mb-2">
+                                    <a href="#" class="text-decoration-none">Annual Report Published: Key Findings</a>
+                                </h3>
+                                <p class="mb-0" style="font-size: 1.05rem; line-height: 1.55;">
+                                    A summary of basin-wide monitoring results, trends, and planned actions for the next cycle.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4" aria-label="News pagination">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+            </section>
+
+            <!-- SIDEBAR -->
+            <aside class="col-lg-4">
+
+                <!-- Filters -->
+                <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-3">Filter</h5>
+
+                    <label class="form-label small text-muted mb-1">Category</label>
+                    <select class="form-select mb-3">
+                        <option selected>All</option>
+                        <option>News</option>
+                        <option>Update</option>
+                        <option>Publication</option>
+                    </select>
+
+                    <label class="form-label small text-muted mb-1">Year</label>
+                    <select class="form-select mb-3">
+                        <option selected>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                    </select>
+
+                    <label class="form-label small text-muted mb-1">Keyword</label>
+                    <input type="text" class="form-control" placeholder="e.g. monitoring, GIS, hydrology">
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-outline-secondary">Apply</button>
+                    </div>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-2">Stay updated</h5>
+                    <p class="text-muted small mb-3">Subscribe for news and official updates.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email address">
+                        <button class="btn btn-secondary" type="button">Subscribe</button>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+
+{% endblock %}

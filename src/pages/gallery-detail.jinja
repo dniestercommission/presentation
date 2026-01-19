@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+{% set title = "Gallery — Collection" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: GALLERY COLLECTION (DETAIL) ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="gallery.html">Gallery</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Water Quality Sampling — Autumn 2025</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="row g-4 align-items-start mb-4">
+            <div class="col-lg-8">
+                <h1 class="fw-bold mb-2">Water Quality Sampling — Autumn 2025</h1>
+                <p class="text-muted mb-0" style="font-size:1.05rem; line-height:1.6;">
+                    A photo collection from a monitoring mission focusing on turbidity, nutrients, and sampling workflow at
+                    key stations along the Dniester. Replace titles, dates, and locations with your real content.
+                </p>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex justify-content-between align-items-start gap-3">
+                        <div>
+                            <div class="text-muted small mb-1">Collection</div>
+                            <div class="fw-semibold">Monitoring mission</div>
+                        </div>
+                        <span class="badge text-bg-secondary">2025</span>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="vstack gap-2 small">
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-calendar3"></i></div>
+                            <div><span class="fw-semibold">Date:</span> 12–15 Oct 2025</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-geo-alt"></i></div>
+                            <div><span class="fw-semibold">Area:</span> Middle Dniester</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-images"></i></div>
+                            <div><span class="fw-semibold">Photos:</span> 18</div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <div class="text-muted" style="width:22px;"><i class="bi bi-person"></i></div>
+                            <div><span class="fw-semibold">Credits:</span> Secretariat / Partners</div>
+                        </div>
+                    </div>
+
+                    <hr class="my-3">
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-download me-1"></i> Download ZIP</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-share me-1"></i> Share</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="gallery.html"><i class="bi bi-arrow-left me-1"></i> Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+            <div class="row g-3 align-items-end">
+                <div class="col-12 col-lg-6">
+                    <label class="form-label small text-muted mb-1" for="photoSearch">Search within this collection</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input id="photoSearch" type="text" class="form-control" placeholder="e.g. station, equipment, river, sample bottle" value="">
+                        <button id="photoSearchBtn" class="btn btn-secondary" type="button">Apply</button>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <label class="form-label small text-muted mb-1" for="photoTag">Tag</label>
+                    <select id="photoTag" class="form-select">
+                        <option value="all" selected>All tags</option>
+                        <option value="sampling">Sampling</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="river">River</option>
+                        <option value="lab">Laboratory</option>
+                        <option value="team">Team</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <label class="form-label small text-muted mb-1" for="photoSort">Sort</label>
+                    <select id="photoSort" class="form-select">
+                        <option selected>Order in collection</option>
+                        <option>Newest first</option>
+                        <option>Oldest first</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge text-bg-secondary">Monitoring</span>
+                <span class="badge text-bg-secondary">Water quality</span>
+                <span class="badge text-bg-secondary">Sampling</span>
+                <span class="badge text-bg-secondary">Field work</span>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <section class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0">Photos</h2>
+                <div class="text-muted small">Tip: click a photo to preview, use arrow keys in modal.</div>
+            </div>
+
+            <div class="gallery-masonry" id="photoGrid">
+
+                <a href="#" class="gallery-item" data-title="Sampling at Station #12" data-meta="Oct 2025 · Tag: sampling" data-tags="sampling,river" data-img="images/g1.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g1.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Sampling at Station #12</div>
+                        <div class="small text-muted">Tag: sampling</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Measuring turbidity" data-meta="Oct 2025 · Tag: equipment" data-tags="equipment,team" data-img="images/g2.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g2.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Measuring turbidity</div>
+                        <div class="small text-muted">Tag: equipment</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="River bank conditions" data-meta="Oct 2025 · Tag: river" data-tags="river" data-img="images/g3.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g3.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">River bank conditions</div>
+                        <div class="small text-muted">Tag: river</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Sample labeling" data-meta="Oct 2025 · Tag: sampling" data-tags="sampling,equipment" data-img="images/g4.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g4.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Sample labeling</div>
+                        <div class="small text-muted">Tag: sampling</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Field team briefing" data-meta="Oct 2025 · Tag: team" data-tags="team" data-img="images/g5.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g5.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Field team briefing</div>
+                        <div class="small text-muted">Tag: team</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Laboratory preparation" data-meta="Oct 2025 · Tag: lab" data-tags="lab,equipment" data-img="images/g2.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g2.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Laboratory preparation</div>
+                        <div class="small text-muted">Tag: lab</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Station overview" data-meta="Oct 2025 · Tag: river" data-tags="river,sampling" data-img="images/g1.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g1.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Station overview</div>
+                        <div class="small text-muted">Tag: river</div>
+                    </div>
+                </a>
+
+                <a href="#" class="gallery-item" data-title="Equipment checklist" data-meta="Oct 2025 · Tag: equipment" data-tags="equipment" data-img="images/g3.jpg">
+                    <div class="gallery-thumb" style="background-image:url('images/g3.jpg')"></div>
+                    <div class="gallery-caption">
+                        <div class="fw-semibold">Equipment checklist</div>
+                        <div class="small text-muted">Tag: equipment</div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Bottom -->
+        <section class="mb-0">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <h3 class="h5 fw-bold mb-2">Notes</h3>
+                        <p class="mb-0 text-muted" style="line-height:1.7;">
+                            Use this area for short context: stations visited, sampling protocol, partners involved, and links to
+                            related news or documents. The structure is designed to work well for institutional reporting.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-0" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                        <div class="p-3 p-md-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h3 class="h5 fw-bold mb-1">Map</h3>
+                                <p class="text-muted small mb-0">Preview map placeholder (optional).</p>
+                            </div>
+                            <a href="gallery.html#dniesterMap" class="btn btn-sm btn-outline-secondary">Open full map</a>
+                        </div>
+                        <div style="height: 280px; background:#e9ecef; display:flex; align-items:center; justify-content:center;">
+                            <div class="text-muted small text-center px-4">
+                                Map preview placeholder (optional).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Photo Viewer Modal -->
+    <div class="modal fade" id="photoViewer" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="border-radius:0;">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title mb-0" id="viewerTitle">Photo</h5>
+                        <div class="text-muted small" id="viewerMeta"></div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="viewerPrev" aria-label="Previous">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button" id="viewerNext" aria-label="Next">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <img id="viewerImg" src="" alt="Photo preview" class="img-fluid w-100">
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div class="text-muted small" id="viewerIndex">1 / 1</div>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-sm btn-outline-secondary" href="#" id="viewerOpenOriginal"><i class="bi bi-box-arrow-up-right me-1"></i> Open</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="#" id="viewerDownload"><i class="bi bi-download me-1"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+const switcher = document.getElementById("themeSwitcher");
+    const themeIcon = document.getElementById("themeIcon");
+    const root = document.documentElement;
+
+    let savedTheme = localStorage.getItem("theme") || "dark";
+    root.setAttribute("data-bs-theme", savedTheme);
+    updateIcon(savedTheme);
+
+    switcher.addEventListener("click", () => {
+        let current = root.getAttribute("data-bs-theme");
+        let next = current === "dark" ? "light" : "dark";
+
+        root.setAttribute("data-bs-theme", next);
+        localStorage.setItem("theme", next);
+        updateIcon(next);
+    });
+
+    function updateIcon(theme) {
+        if (theme === "light") {
+            themeIcon.className = "bi bi-sun-fill";
+        } else {
+            themeIcon.className = "bi bi-moon-fill";
+        }
+    }
+</script>
+<script>
+document.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
+
+    let timer;
+
+    item.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            menu.classList.add('show');
+            menu.style.opacity = "1";
+            menu.style.transform = "translateY(0)";
+            menu.style.pointerEvents = "auto";
+        }
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180); // ← достаточно чтобы пользователь успел дойти
+        }
+    });
+
+    // Если мышь заходит назад в меню — не закрываем
+    const menu = item.querySelector('.dropdown-menu');
+    if (menu) {
+        menu.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+        });
+        menu.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180);
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const items = Array.from(document.querySelectorAll(".gallery-item"));
+    const searchEl = document.getElementById("photoSearch");
+    const tagEl = document.getElementById("photoTag");
+    const applyBtn = document.getElementById("photoSearchBtn");
+
+    const viewerModalEl = document.getElementById("photoViewer");
+    const viewerTitle = document.getElementById("viewerTitle");
+    const viewerMeta = document.getElementById("viewerMeta");
+    const viewerImg = document.getElementById("viewerImg");
+    const viewerIndex = document.getElementById("viewerIndex");
+    const btnPrev = document.getElementById("viewerPrev");
+    const btnNext = document.getElementById("viewerNext");
+    const btnOpen = document.getElementById("viewerOpenOriginal");
+    const btnDownload = document.getElementById("viewerDownload");
+
+    let activeList = items.slice();
+    let currentIdx = 0;
+    let modal;
+
+    function applyFilters() {
+        const q = (searchEl?.value || "").trim().toLowerCase();
+        const tag = tagEl?.value || "all";
+
+        activeList = [];
+
+        items.forEach((a) => {
+            const title = (a.dataset.title || "").toLowerCase();
+            const meta = (a.dataset.meta || "").toLowerCase();
+            const tags = (a.dataset.tags || "").toLowerCase();
+
+            const okQuery = !q || title.includes(q) || meta.includes(q) || tags.includes(q);
+            const okTag = (tag === "all") || tags.split(",").map(t => t.trim()).includes(tag);
+
+            const visible = okQuery && okTag;
+            a.classList.toggle("d-none", !visible);
+            if (visible) activeList.push(a);
+        });
+
+        if (activeList.length) currentIdx = 0;
+    }
+
+    applyBtn?.addEventListener("click", applyFilters);
+
+    function openAt(idx) {
+        if (!activeList.length) return;
+
+        currentIdx = Math.max(0, Math.min(idx, activeList.length - 1));
+        const el = activeList[currentIdx];
+
+        viewerTitle.textContent = el.dataset.title || "Photo";
+        viewerMeta.textContent = el.dataset.meta || "";
+        const src = el.dataset.img || "";
+        viewerImg.src = src;
+        viewerIndex.textContent = `${currentIdx + 1} / ${activeList.length}`;
+
+        btnOpen.href = src;
+        btnDownload.href = src;
+
+        if (!modal) modal = new bootstrap.Modal(viewerModalEl);
+        modal.show();
+    }
+
+    items.forEach(a => {
+        a.addEventListener("click", (e) => {
+            e.preventDefault();
+            const idx = activeList.indexOf(a);
+            openAt(idx >= 0 ? idx : 0);
+        });
+    });
+
+    btnPrev?.addEventListener("click", () => openAt(currentIdx - 1));
+    btnNext?.addEventListener("click", () => openAt(currentIdx + 1));
+
+    document.addEventListener("keydown", (e) => {
+        if (!viewerModalEl.classList.contains("show")) return;
+        if (e.key === "ArrowLeft") openAt(currentIdx - 1);
+        if (e.key === "ArrowRight") openAt(currentIdx + 1);
+    });
+
+    applyFilters();
+});
+</script>
+{% endblock %}

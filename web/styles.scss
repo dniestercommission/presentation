@@ -1,0 +1,15 @@
+@use "./partials/tokens";
+@use "bootstrap/scss/bootstrap";
+@use "./partials/base";
+
+@use "./partials/topbar";
+@use "./partials/navbar";
+@use "./partials/mega-menu";
+@use "./partials/dropdown";
+@use "./partials/modal";
+@use "./partials/news";
+@use "./partials/carousel";
+@use "./partials/gallery";
+@use "./partials/footer";
+
+@use "./partials/bootstrap-tweaks";

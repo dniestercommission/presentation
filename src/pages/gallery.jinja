@@ -1,0 +1,416 @@
+{% extends "base.html" %}
+{% set title = "Gallery" %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: GALLERY ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">Gallery</h1>
+                <p class="text-muted mb-0">Photos from monitoring missions, events, field work and the Dniester landscape.</p>
+            </div>
+
+            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="bi bi-search me-2"></i> Search the website
+            </button>
+        </div>
+
+        <!-- Filters -->
+        <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+            <form class="row g-3 align-items-end" onsubmit="return false;">
+                <div class="col-12 col-lg-5">
+                    <label class="form-label small text-muted mb-1" for="galleryQuery">Search in gallery</label>
+                    <input id="galleryQuery" type="text" class="form-control" placeholder="e.g. flood, delta, sampling, youth" value="sampling">
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <label class="form-label small text-muted mb-1" for="gallerySection">Section</label>
+                    <select id="gallerySection" class="form-select">
+                        <option value="all" selected>All sections</option>
+                        <option value="missions">Monitoring missions</option>
+                        <option value="events">Events</option>
+                        <option value="landscapes">Landscapes</option>
+                        <option value="community">Community</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <label class="form-label small text-muted mb-1" for="galleryYear">Year</label>
+                    <select id="galleryYear" class="form-select">
+                        <option value="all" selected>All</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-lg-2 d-grid">
+                    <button id="applyGalleryFilters" class="btn btn-secondary" type="button">Apply</button>
+                </div>
+
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-2 mt-2">
+                        <span class="badge text-bg-secondary">Tag: monitoring</span>
+                        <span class="badge text-bg-secondary">Tag: water quality</span>
+                        <span class="badge text-bg-secondary">Tag: satellite</span>
+                        <span class="badge text-bg-secondary">Tag: youth</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sections -->
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0">Monitoring missions</h2>
+                <a href="#" class="text-decoration-none">View all</a>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="missions" data-year="2025" data-tags="sampling,water quality">
+                            <div class="gallery-card-img" style="background-image:url('images/g1.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Oct 2025 • Water Quality</div>
+                                <div class="fw-semibold">Sampling at Station #12</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="missions" data-year="2025" data-tags="hydrology,river flow">
+                            <div class="gallery-card-img" style="background-image:url('images/g2.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Sep 2025 • Hydrology</div>
+                                <div class="fw-semibold">Flow measurements</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="missions" data-year="2024" data-tags="sediment,turbidity">
+                            <div class="gallery-card-img" style="background-image:url('images/g3.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Jun 2024 • Sediment</div>
+                                <div class="fw-semibold">Turbidity observation</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0">Events</h2>
+                <a href="#" class="text-decoration-none">View all</a>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="events" data-year="2025" data-tags="summit,meeting">
+                            <div class="gallery-card-img" style="background-image:url('images/g4.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Nov 2025 • Summit</div>
+                                <div class="fw-semibold">Commission meeting</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="events" data-year="2024" data-tags="workshop,training">
+                            <div class="gallery-card-img" style="background-image:url('images/g5.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">May 2024 • Workshop</div>
+                                <div class="fw-semibold">Training session</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card" data-section="events" data-year="2023" data-tags="conference,partners">
+                            <div class="gallery-card-img" style="background-image:url('images/g2.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Oct 2023 • Partners</div>
+                                <div class="fw-semibold">Joint conference</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0">Landscapes</h2>
+                <a href="#" class="text-decoration-none">View all</a>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card gallery-card-compact" data-section="landscapes" data-year="2025" data-tags="river,autumn">
+                            <div class="gallery-card-img" style="background-image:url('images/g3.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Autumn river</div>
+                                <div class="fw-semibold">Upper basin</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card gallery-card-compact" data-section="landscapes" data-year="2024" data-tags="delta,wetlands">
+                            <div class="gallery-card-img" style="background-image:url('images/g1.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Wetlands</div>
+                                <div class="fw-semibold">Delta area</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card gallery-card-compact" data-section="landscapes" data-year="2023" data-tags="snow,winter">
+                            <div class="gallery-card-img" style="background-image:url('images/g4.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Winter</div>
+                                <div class="fw-semibold">Snow and ice</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="gallery-card gallery-card-compact" data-section="landscapes" data-year="2025" data-tags="sunset,river">
+                            <div class="gallery-card-img" style="background-image:url('images/g5.jpg')"></div>
+                            <div class="gallery-card-body">
+                                <div class="text-muted small">Sunset</div>
+                                <div class="fw-semibold">River banks</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP SECTION -->
+        <section class="mb-0">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-2 mb-3">
+                <div>
+                    <h2 class="h4 fw-bold mb-1">Map of photos</h2>
+                    <p class="text-muted mb-0">Click markers to preview a photo. Use it to explore locations along the Dniester.</p>
+                </div>
+                <div class="text-muted small">OpenStreetMap · interactive markers</div>
+            </div>
+
+            <div class="map-wrap" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                <div id="dniesterMap" style="height: 520px; width: 100%;"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Photo modal -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="border-radius:0;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photoModalTitle">Photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="photoModalImg" src="" alt="Photo preview" class="img-fluid w-100">
+                    <div class="text-muted small mt-2" id="photoModalMeta"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const switcher = document.getElementById("themeSwitcher");
+    const themeIcon = document.getElementById("themeIcon");
+    const root = document.documentElement;
+
+    let savedTheme = localStorage.getItem("theme") || "dark";
+    root.setAttribute("data-bs-theme", savedTheme);
+    updateIcon(savedTheme);
+
+    switcher.addEventListener("click", () => {
+        let current = root.getAttribute("data-bs-theme");
+        let next = current === "dark" ? "light" : "dark";
+
+        root.setAttribute("data-bs-theme", next);
+        localStorage.setItem("theme", next);
+        updateIcon(next);
+    });
+
+    function updateIcon(theme) {
+        if (theme === "light") {
+            themeIcon.className = "bi bi-sun-fill";
+        } else {
+            themeIcon.className = "bi bi-moon-fill";
+        }
+    }
+</script>
+<script>
+document.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
+
+    let timer;
+
+    item.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            menu.classList.add('show');
+            menu.style.opacity = "1";
+            menu.style.transform = "translateY(0)";
+            menu.style.pointerEvents = "auto";
+        }
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const menu = item.querySelector('.dropdown-menu');
+        if (menu) {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180); // ← достаточно чтобы пользователь успел дойти
+        }
+    });
+
+    // Если мышь заходит назад в меню — не закрываем
+    const menu = item.querySelector('.dropdown-menu');
+    if (menu) {
+        menu.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+        });
+        menu.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
+                menu.classList.remove('show');
+                menu.style.opacity = "0";
+                menu.style.transform = "translateY(8px)";
+                menu.style.pointerEvents = "none";
+            }, 180);
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ====== Simple gallery card filtering (client-side demo) ======
+    const queryEl = document.getElementById("galleryQuery");
+    const sectionEl = document.getElementById("gallerySection");
+    const yearEl = document.getElementById("galleryYear");
+    const applyBtn = document.getElementById("applyGalleryFilters");
+    const cards = Array.from(document.querySelectorAll(".gallery-card"));
+
+    function applyFilters() {
+        const q = (queryEl.value || "").trim().toLowerCase();
+        const s = sectionEl.value;
+        const y = yearEl.value;
+
+        cards.forEach(card => {
+            const section = card.dataset.section || "";
+            const year = card.dataset.year || "";
+            const tags = (card.dataset.tags || "").toLowerCase();
+            const title = (card.querySelector(".fw-semibold")?.textContent || "").toLowerCase();
+
+            const okSection = (s === "all") || (section === s);
+            const okYear = (y === "all") || (year === y);
+            const okQuery = !q || title.includes(q) || tags.includes(q);
+
+            const col = card.closest("[class*='col-']");
+            if (col) col.classList.toggle("d-none", !(okSection && okYear && okQuery));
+        });
+    }
+
+    applyBtn?.addEventListener("click", applyFilters);
+
+    // ====== Map (OpenStreetMap via Leaflet) ======
+    const mapEl = document.getElementById("dniesterMap");
+    if (!mapEl) return;
+
+    // Center around Dniester (demo)
+    const map = L.map("dniesterMap", { scrollWheelZoom: false }).setView([47.2, 29.6], 7);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    // Demo dataset: replace with real coordinates + photos later
+    const photos = [
+        { title: "Sampling at Station #12", meta: "Oct 2025 · Monitoring mission · Water Quality", img: "images/g1.jpg", lat: 47.00, lon: 28.86 },
+        { title: "Flow measurements", meta: "Sep 2025 · Monitoring mission · Hydrology", img: "images/g2.jpg", lat: 48.45, lon: 27.74 },
+        { title: "Turbidity observation", meta: "Jun 2024 · Monitoring mission · Sediment", img: "images/g3.jpg", lat: 46.60, lon: 30.20 },
+        { title: "Commission meeting", meta: "Nov 2025 · Event · Chisinau", img: "images/g4.jpg", lat: 47.01, lon: 28.86 }
+    ];
+
+    function popupHtml(p) {
+        return `
+            <div style="width:220px;">
+                <div style="background-image:url('${p.img}'); background-size:cover; background-position:center; height:110px; width:100%; margin-bottom:8px;"></div>
+                <div style="font-weight:600; margin-bottom:4px;">${p.title}</div>
+                <div style="font-size:12px; color:#6c757d; margin-bottom:8px;">${p.meta}</div>
+                <button class="btn btn-sm btn-outline-secondary w-100 js-open-photo">Open photo</button>
+            </div>
+        `;
+    }
+
+    photos.forEach(p => {
+        const marker = L.marker([p.lat, p.lon]).addTo(map);
+        marker.bindPopup(popupHtml(p));
+
+        marker.on("popupopen", (e) => {
+            const node = e.popup.getElement();
+            if (!node) return;
+            const btn = node.querySelector(".js-open-photo");
+            if (!btn) return;
+
+            btn.addEventListener("click", () => {
+                document.getElementById("photoModalTitle").textContent = p.title;
+                document.getElementById("photoModalMeta").textContent = p.meta;
+                document.getElementById("photoModalImg").src = p.img;
+
+                const modal = new bootstrap.Modal(document.getElementById("photoModal"));
+                modal.show();
+            }, { once: true });
+        });
+    });
+
+});
+</script>
+{% endblock %}

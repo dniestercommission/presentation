@@ -1,0 +1,24 @@
+{
+  "name": "dniester-static-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:assets": "vite build",
+    "build:html": "python build.py",
+    "build": "python build.py && vite build",
+    "dev:assets": "vite build --watch",
+    "dev:html": "python watch_build.py",
+    "serve": "python -m http.server 8000 --directory dist",
+    "dev:all": "concurrently -k \"npm run dev:assets\" \"npm run dev:html\" \"npm run serve\""
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "vite": "^5.4.0",
+    "concurrently": "^9.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3"
+  }
+}

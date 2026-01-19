@@ -1,0 +1,50 @@
+.btn-secondary{
+  background: var(--secondary-bg) !important;
+  border-color: var(--secondary-border) !important;
+  color: var(--secondary-text) !important;
+}
+.btn-secondary:hover,
+.btn-secondary:focus{
+  background: var(--secondary-bg-hover) !important;
+  border-color: var(--secondary-bg-hover) !important;
+  color: var(--secondary-text) !important;
+}
+
+.pagination .page-link{
+  background: var(--secondary-bg);
+  border-color: var(--secondary-border);
+  color: var(--secondary-text);
+}
+.pagination .page-link:hover{
+  background: var(--secondary-bg-hover);
+  border-color: var(--secondary-bg-hover);
+  color: var(--secondary-text);
+}
+.pagination .page-item.active .page-link{
+  background: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}
+.pagination .page-item.disabled .page-link{
+  opacity: .55;
+  background: var(--secondary-bg);
+  border-color: var(--secondary-border);
+  color: var(--secondary-text);
+}
+
+.form-check-input{
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+.form-check-input:checked{
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-border);
+}
+.form-check-input:focus{
+  border-color: var(--secondary-border);
+  box-shadow: 0 0 0 .2rem rgba(108,117,125,.25);
+}
+.form-switch .form-check-input:checked{
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-border);
+}

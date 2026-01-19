@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" data-bs-theme="{{ theme|default('light') }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title|default('Dniester Commission') }}</title>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="assets/main.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- ========== TOPBAR ========== -->
+  <div class="topbar d-flex justify-content-between align-items-center px-3">
+    <div class="d-flex align-items-center gap-3">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-threads"></i></a>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <div class="lang-switcher d-flex align-items-center gap-1 me-3">
+        <a href="#" class="lang-option">Română</a>
+        <a href="#" class="lang-option">Українська</a>
+        <a href="#" class="lang-option active-lang">English</a>
+      </div>
+
+      <div class="theme-toggle">
+        <button id="themeSwitcher" class="btn btn-sm theme-btn">
+          <i id="themeIcon" class="bi bi-moon-fill"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# ========== NAVBAR + MEGA MENU PARTIAL ========== #}
+  {% include "_mega_menu.html" %}
+
+  {% block content %}{% endblock %}
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="pt-5 mt-5">
+    <div class="container">
+
+      <!-- PARTNER LOGOS -->
+      <div class="eo-footer-partners d-flex flex-wrap justify-content-center align-items-center gap-4 mt-4 mb-4">
+        <img src="images/mindovkillya-logo.png" alt="Partner 1" class="eo-partner-logo">
+        <img src="images/ministerul_mediului_logo.jpg" alt="Partner 2" class="eo-partner-logo">
+        <img src="images/p3.png" alt="Partner 3" class="eo-partner-logo">
+        <img src="images/undp-logo.png" alt="UNDP" class="eo-partner-logo">
+        <img src="images/OSCE_LT_ENG_RGB.png" alt="OSCE" class="eo-partner-logo" style="height: 36px;">
+        <img src="images/unece.svg" alt="Partner 6" class="eo-partner-logo">
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3 mb-4">
+          <ul class="list-unstyled">
+            <li><a href="#">News & Events</a></li>
+            <li><a href="#">Activities & Cooperation</a></li>
+            <li><a href="#">Data & Resources</a></li>
+            <li><a href="#">About the Dniester Commission</a></li>
+            <li><a href="#">Contact & Engagement</a></li>
+          </ul>
+
+          <div class="d-flex gap-4 mt-3">
+            <a href="#"><i class="bi bi-facebook fs-4 bi-footer"></i></a>
+            <a href="#"><i class="bi bi-instagram fs-4 bi-footer"></i></a>
+            <a href="#"><i class="bi bi-youtube fs-4 bi-footer"></i></a>
+            <a href="#"><i class="bi bi-twitter-x fs-4 bi-footer"></i></a>
+            <a href="#"><i class="bi bi-threads fs-4 bi-footer"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <p>Address line 1<br>City, Country</p>
+          <p>Email: info@example.com</p>
+          <p>Phone: +555 123 456 789</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+        <div class="col-md-2 mb-4">
+          <img src="images/smallmap.png" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4 pb-3">
+        © 2025 Dniester Commission. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content p-3">
+        <div class="modal-header border-0">
+          <h5 class="modal-title d-flex align-items-center gap-2">
+            <i class="bi bi-search"></i> Search
+            <span class="badge bg-info">AI Assistant — Beta</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <input type="text" class="form-control form-control-lg"
+                   placeholder="water quality monitoring">
+          </div>
+
+          <hr>
+
+          <div class="ai-answer">
+            <p>
+              <strong>AI Assistant:</strong><br>
+              Based on your query about
+              <mark>water quality monitoring</mark>,
+              here are the most relevant sections of the website:
+            </p>
+
+            <ul>
+              <li><a href="#">Water Quality Reports</a> — annual and quarterly analytical reports.</li>
+              <li><a href="#">Monitoring → Hydrology</a> — water level and flow measurements.</li>
+              <li><a href="#">Projects → Ongoing</a> — active cross-border environmental initiatives.</li>
+            </ul>
+
+            <p>You may also be interested in <mark>ecological assessment</mark> of the Dniester basin.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Site scripts -->
+  <script type="module" src="assets/main.js"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

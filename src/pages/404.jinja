@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% set title = "Page not found" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: 404 ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="p-4 p-md-5 text-center" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="display-5 fw-bold mb-2">404</div>
+                    <h1 class="fw-bold mb-2">Page not found</h1>
+                    <p class="text-muted mb-4">
+                        The page you are looking for might have been moved, renamed, or is temporarily unavailable.
+                    </p>
+
+                    <!-- Search box (no AI button) -->
+                    <form class="mx-auto" style="max-width: 640px;" action="search.html" method="get">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" name="q" placeholder="Search the website">
+                            <button class="btn btn-secondary" type="submit">Search</button>
+                        </div>
+                        <div class="form-text text-muted mt-2">
+                            Try searching for a news item, document, monitoring report, or a topic.
+                        </div>
+                    </form>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                        <a href="index.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-house me-2"></i> Go to homepage
+                        </a>
+                        <a href="news-listing.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-newspaper me-2"></i> Browse news
+                        </a>
+                        <a href="contacts.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-envelope me-2"></i> Contact us
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Helpful links -->
+                <div class="p-3 p-md-4 mt-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-3">Popular sections</h5>
+                    <div class="row g-3 text-start">
+                        <div class="col-md-6">
+                            <a href="news-listing.html" class="text-decoration-none fw-semibold d-block mb-1">News</a>
+                            <div class="text-muted small">Latest updates and announcements.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="search.html" class="text-decoration-none fw-semibold d-block mb-1">Search</a>
+                            <div class="text-muted small">Find pages, documents, datasets, and more.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="text-decoration-none fw-semibold d-block mb-1">Monitoring</a>
+                            <div class="text-muted small">Water quality, hydrology, and basin indicators.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="text-decoration-none fw-semibold d-block mb-1">Documents</a>
+                            <div class="text-muted small">Official publications and meeting materials.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+
+{% endblock %}

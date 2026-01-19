@@ -1,0 +1,44 @@
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 1s, color 1s;
+}
+
+/* Links */
+a { color: var(--text-color); }
+a:hover { color: var(--text-muted); }
+
+/* Icons (global) */
+.bi {
+  color: var(--icon-color) !important;
+  transition: color 0.25s;
+}
+.bi:hover {
+  color: var(--icon-hover-color) !important;
+}
+
+.bi-footer {
+  color: var(--icon-footer-color) !important;
+  transition: color 0.25s;
+}
+.bi-footer:hover {
+  color: var(--icon-footer-hover-color) !important;
+}
+
+/* Cards-like blocks */
+.news-large,
+.news-small,
+.card,
+.footer-top {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Hero base */
+.hero-full {
+  background: var(--bg-secondary);
+}
+.hero-full .hero-content,
+.hero-full .col-md-6 {
+  color: var(--text-color);
+}

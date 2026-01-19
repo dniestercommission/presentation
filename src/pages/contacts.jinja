@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% set title = "Contacts" %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block content %}
+<!-- ========== PAGE: CONTACTS ========== -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contacts</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">Contacts</h1>
+                <p class="text-muted mb-0">Get in touch with the Commission Secretariat and find official contact details.</p>
+            </div>
+
+            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="bi bi-search me-2"></i> Search the website
+            </button>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- LEFT: DETAILS -->
+            <section class="col-lg-5">
+
+                <!-- Main contacts card -->
+                <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-3">Secretariat</h5>
+
+                    <div class="vstack gap-2">
+                        <div class="d-flex gap-2">
+                            <div style="width:28px" class="text-muted"><i class="bi bi-geo-alt"></i></div>
+                            <div>
+                                <div class="fw-semibold">Office address</div>
+                                <div class="text-muted">Str. Example 10, 2001, Chisinau, Republic of Moldova</div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <div style="width:28px" class="text-muted"><i class="bi bi-telephone"></i></div>
+                            <div>
+                                <div class="fw-semibold">Phone</div>
+                                <div class="text-muted">+373 22 000 000</div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <div style="width:28px" class="text-muted"><i class="bi bi-envelope"></i></div>
+                            <div>
+                                <div class="fw-semibold">Email</div>
+                                <div class="text-muted"><a href="#" class="text-decoration-none">info@dniester.org</a></div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <div style="width:28px" class="text-muted"><i class="bi bi-clock"></i></div>
+                            <div>
+                                <div class="fw-semibold">Office hours</div>
+                                <div class="text-muted">Mon–Fri, 09:00–17:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-file-earmark-text me-1"></i> Official details</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-download me-1"></i> Contact card (vCard)</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-link-45deg me-1"></i> Directions</a>
+                    </div>
+                </div>
+
+                <!-- Department contacts -->
+                <div class="p-3 p-md-4 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-3">Departments</h5>
+
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="fw-semibold">Press & Communications</div>
+                            <div class="small text-muted"><i class="bi bi-envelope me-1"></i> press@dniester.org</div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="fw-semibold">Monitoring & Data</div>
+                            <div class="small text-muted"><i class="bi bi-envelope me-1"></i> monitoring@dniester.org</div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="fw-semibold">Projects & Partnerships</div>
+                            <div class="small text-muted"><i class="bi bi-envelope me-1"></i> projects@dniester.org</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <h5 class="fw-bold mb-3">Social media</h5>
+                    <div class="d-flex gap-3 fs-4">
+                        <a href="#" class="text-decoration-none"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-threads"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="bi bi-youtube"></i></a>
+                    </div>
+                    <p class="text-muted small mt-3 mb-0">For official updates, please use verified channels.</p>
+                </div>
+
+            </section>
+
+            <!-- RIGHT: MAP + FORM -->
+            <section class="col-lg-7">
+
+                <!-- Map -->
+                <div class="p-0 mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="p-3 p-md-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="fw-bold mb-1">Location</h5>
+                            <p class="text-muted small mb-0">Map placeholder — replace with Google Maps / OpenStreetMap embed.</p>
+                        </div>
+                        <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-box-arrow-up-right me-1"></i> Open map</a>
+                    </div>
+
+                    <!-- Embed placeholder -->
+                    <div style="height: 360px; background: #e9ecef; display:flex; align-items:center; justify-content:center;">
+                        <div class="text-muted text-center px-4">
+                            <div class="fw-semibold mb-1">Map Embed Placeholder</div>
+                            <div class="small">Paste the iframe embed code here.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact form -->
+                <div class="p-3 p-md-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3 mb-3">
+                        <div>
+                            <h5 class="fw-bold mb-1">Send a message</h5>
+                            <p class="text-muted small mb-0">Use this form for general inquiries. For media requests, contact Press & Communications.</p>
+                        </div>
+                        <span class="badge text-bg-secondary align-self-start">Public form</span>
+                    </div>
+
+                    <form action="#" method="post" class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Full name</label>
+                            <input type="text" class="form-control" placeholder="Your name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="name@example.com">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Subject</label>
+                            <input type="text" class="form-control" placeholder="Topic of your message">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" rows="6" placeholder="Write your message..."></textarea>
+                            <div class="form-text">
+                                Please do not include sensitive personal data. Messages are handled during office hours.
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex flex-wrap justify-content-between align-items-center gap-3 mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="privacyCheck">
+                                <label class="form-check-label small text-muted" for="privacyCheck">
+                                    I agree to the processing of personal data for responding to this inquiry.
+                                </label>
+                            </div>
+
+                            <button class="btn btn-secondary" type="button">
+                                <i class="bi bi-send me-2"></i> Send message
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+
+{% endblock %}
