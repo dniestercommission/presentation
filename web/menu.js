@@ -338,8 +338,8 @@
   ========================== */
   about_overview: {
     title: "About",
-    desc: "Mission, governance, partners and institutional information (prototype).",
-    imageUrl: "images/OSCE_LT_ENG_RGB.png",
+    desc: "Mission, governance, partners and institutional information.",
+    imageUrl: "images/g1.jpg",
     links: [
       { t: "Mission & Mandate", href: "#" },
       { t: "Governance & Structure", href: "#" },
@@ -348,7 +348,7 @@
     featured: [
       { t: "Secretariat & Team", href: "#" },
       { t: "Contact", href: "contacts.html" },
-      { t: "News", href: "news-listing.html" }
+      // { t: "News", href: "news-listing.html" }
     ]
   },
 
