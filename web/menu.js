@@ -337,7 +337,7 @@
      ABOUT
   ========================== */
   about_overview: {
-    title: "About",
+    title: "About Project",
     desc: "Mission, governance, partners and institutional information.",
     imageUrl: "images/g1.jpg",
     links: [
@@ -467,22 +467,6 @@
     ]
   },
 
-  con_form: {
-    title: "Contact Form",
-    desc: "Submit an enquiry via the website form (prototype).",
-    imageUrl: "images/g2.jpg",
-    links: [
-      { t: "Open contact form", href: "contacts.html" },
-      { t: "General contacts", href: "contacts.html" },
-      { t: "News", href: "news-listing.html" }
-    ],
-    featured: [
-      { t: "Request information", href: "contacts.html" },
-      { t: "Report an issue", href: "contacts.html" },
-      { t: "Get involved (placeholder)", href: "#" }
-    ]
-  },
-
   con_follow: {
     title: "Follow Us",
     desc: "Social channels and updates (prototype).",
@@ -513,7 +497,24 @@
       { t: "Recent announcements", href: "news-listing.html" },
       { t: "Search", href: "search.html" }
     ]
+  },
+
+  con_form: {
+    title: "Feedback and Complaints",
+    desc: "Submit an enquiry via the website form (prototype).",
+    imageUrl: "images/g2.jpg",
+    links: [
+      { t: "Open contact form", href: "contacts.html" },
+      { t: "General contacts", href: "contacts.html" },
+      { t: "News", href: "news-listing.html" }
+    ],
+    featured: [
+      { t: "Request information", href: "contacts.html" },
+      { t: "Report an issue", href: "contacts.html" },
+      { t: "Get involved (placeholder)", href: "#" }
+    ]
   }
+
 };
 
 
