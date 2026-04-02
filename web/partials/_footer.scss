@@ -1,5 +1,16 @@
+
+
 footer {
-  background: var(--bg-footer);
+  // background: var(--bg-footer);
+  background: #2E1F5E;
+  background: radial-gradient(
+      100% 300.28% at 100% 0%,
+      #2E1F5E 0%,
+      #2E1F5E 32.94%,
+      #2E1F5E 49.9%,
+      #2E1F5E 50.2%,
+      #007bc5 100%
+  );
   color: var(--text-inverse);
 }
 
